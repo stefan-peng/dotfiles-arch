@@ -1,0 +1,14 @@
+"displayctl backlight down"
+	XF86MonBrightnessDown
+
+"displayctl backlight up"
+	XF86MonBrightnessUp
+
+"amixer -q sset Master toggle"
+	XF86AudioMute
+
+"amixer -q sset Master 5%-"
+	XF86AudioLowerVolume
+
+"amixer -q sset Master 5%+"
+	XF86AudioRaiseVolume
