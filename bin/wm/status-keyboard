@@ -1,7 +1,12 @@
 #!/bin/sh
 
-stdlayout=us  # standard layout takes "default" color
-stdname=en-us # arbitrary, descriptive only
+#stdlayout=us  # standard layout takes "default" color
+#stdname=en-us # arbitrary, descriptive only
+
+english="xkb:us::eng"
+chinese=libpinyin
+french="xkb:fr::fra"
+spanish="xkb:es::spa"
 
 base03=#002b36
 base02=#073642
@@ -20,12 +25,17 @@ blue=#268bd2
 cyan=#2aa198
 green=#859900
 
-layout="$(xkb-switch)"
+layout="$(ibus engine)"
 
 case $layout in
-    ${stdlayout}) color=$green; icon=" "; name=$stdname ;; # f11c fa-keyboard-o
-    *) color=$magenta; icon=" "; name="greek" ;; # f11c fa-keyboard-o
+    ${english}) color=$green; icon=" "; name=en ;; # f11c fa-keyboard-o
+    ${chinese}) color=$orange; icon=" "; name=cn ;; # f11c fa-keyboard-o
+    ${french})  color=$yellow; icon=" "; name=fr ;; # f11c fa-keyboard-o
+    ${spanish}) color=$yellow;  icon=" "; name=es ;; # f11c fa-keyboard-o
+    *) color=$magenta; icon=" "; name="other" ;; # f11c fa-keyboard-o
 esac
+
+#color=$green; icon=" "; name=$layout
 
 echo "<fc=$color><fn=1>$icon</fn> ${name}</fc>"
 

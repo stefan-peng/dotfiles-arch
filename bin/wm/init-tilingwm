@@ -129,6 +129,8 @@ compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://gi
 # ----------------------------------------------------------------------
 # configure keyboard
 
+setxkbmap us -variant altgr-intl -option ctrl:nocaps 
+
 # following systemctl start shouldn't be necessary
 #systemctl --user start xcape
 #sleep 1
