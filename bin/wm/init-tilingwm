@@ -36,7 +36,8 @@
 # lockscreen script if not already running. I can switch to i3lock in
 # that script (or others) as desired.
 
-xss-lock -- $HOME/bin/wm/lockscreen &
+#xss-lock -- $HOME/bin/wm/lockscreen &
+xss-lock slock &
 
 
 # ----------------------------------------------------------------------
@@ -111,7 +112,7 @@ unclutter --timeout 2 --fork
 # ----------------------------------------------------------------------
 # start compositing for window transparency
 
-compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
+#compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
 
 
 # ----------------------------------------------------------------------
@@ -130,6 +131,7 @@ compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://gi
 # configure keyboard
 
 setxkbmap us -variant altgr-intl -option ctrl:nocaps 
+ibus-daemon &
 
 # following systemctl start shouldn't be necessary
 #systemctl --user start xcape

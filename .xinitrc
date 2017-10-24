@@ -41,7 +41,6 @@ export TERMINAL=urxvt
  export XMODIFIERS=@im=fcitx
 
 redshift &
-xscreensaver &
 xbindkeys &
 fcitx &
 unclutter &
