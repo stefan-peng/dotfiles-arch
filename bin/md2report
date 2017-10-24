@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for i in *.md; do
+pandoc -o $i.pdf -f markdown+implicit_figures --latex-engine=xelatex $i; pandoc -o $i.docx -f markdown+implicit_figures $i;
+done
