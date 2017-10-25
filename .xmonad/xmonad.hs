@@ -258,7 +258,7 @@ projects =
 
 myTerminal          = "urxvt"
 myAltTerminal       = "st -e"
-myBrowser           = "chromium --force-device-scale-factor=1.5" 
+myBrowser           = "chromium --force-device-scale-factor=2" 
 myBrowserClass	    = "chromium"
 myStatusBar         = "xmobar -x0 /home/stefan/.xmonad/xmobar.conf"
 --myLauncher          = "dmenu_run"
@@ -999,7 +999,7 @@ myKeys conf = let
     [ ("M-q"                    , addName "Restart XMonad"                  $ spawn "xmonad --restart")
     , ("M-C-q"                  , addName "Rebuild & restart XMonad"        $ spawn "xmonad --recompile && xmonad --restart")
     , ("M-S-q"                  , addName "Quit XMonad"                     $ confirmPrompt hotPromptTheme "Quit XMonad" $ io (exitWith ExitSuccess))
-    , ("M-x"                    , addName "Lock screen"                     $ spawn "lockscreen")
+    , ("M-x"                    , addName "Lock screen"                     $ spawn "slock")
     --, ("M-x"                    , addName "Lock screen"                     $ spawn "xset s activate")
     , ("M-<F4>"                    , addName "Print Screen"                    $ return ())
   --, ("M-F1"                   , addName "Show Keybindings"                $ return ())
