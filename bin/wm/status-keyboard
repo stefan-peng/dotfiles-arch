@@ -3,8 +3,8 @@
 #stdlayout=us  # standard layout takes "default" color
 #stdname=en-us # arbitrary, descriptive only
 
-english="xkb:us::eng"
-chinese=sunpinyin
+english="xkb:us:altgr-intl:eng"
+chinese=pinyin
 french="xkb:fr::fra"
 spanish="xkb:es::spa"
 
