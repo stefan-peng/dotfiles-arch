@@ -259,8 +259,9 @@ projects =
 myTerminal          = "urxvt"
 myAltTerminal       = "st -e"
 myBrowser           = "chromium --force-device-scale-factor=2" 
+myFileManager       = "pcmanfm"
 myBrowserClass	    = "chromium"
-myStatusBar         = "xmobar -x0 /home/stefan/.xmonad/xmobar.conf"
+myStatusBar         = "xmobar -x0 /home/speng/.xmonad/xmobar.conf"
 --myLauncher          = "dmenu_run"
 --myLauncher          = "rofi -matching fuzzy -show run"
 myLauncher          = "rofi -matching fuzzy -modi combi -show combi -combi-modi run,drun"
@@ -1031,6 +1032,7 @@ myKeys conf = let
     [ ("M-<Space>"              , addName "Launcher"                        $ spawn myLauncher)
     , ("M-<Return>"             , addName "Terminal"                        $ spawn myTerminal)
     , ("M-\\"                   , addName "Browser"                         $ spawn myBrowser)
+    , ("M-e"                    , addName "File manager"                    $ spawn myFileManager)
     , ("M-s s"                  , addName "Cancel submap"                   $ return ())
     , ("M-s M-s"                , addName "Cancel submap"                   $ return ())
     ] ^++^
@@ -1291,6 +1293,8 @@ myStartupHook = do
 
     -- init-tilingwm sets up all major "desktop environment" like components
     spawnOnce "$HOME/bin/wm/init-tilingwm"
+    -- init-xmobars sets up xmobar
+    spawnOnce "$HOME/bin/wm/init-xmobars"
     -- spawn "/home/ethan/bin/wm/init-tilingwm"
     spawn "$HOME/bin/wm/init-wallpaper"
 
