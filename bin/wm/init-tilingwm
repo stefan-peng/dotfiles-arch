@@ -112,7 +112,7 @@ unclutter --timeout 2 --fork
 # ----------------------------------------------------------------------
 # start compositing for window transparency
 
-#compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
+compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
 
 
 # ----------------------------------------------------------------------
