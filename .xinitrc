@@ -19,5 +19,6 @@ redshift &
 slstatus &
 xss-lock slock &
 feh --bg-fill ~/tmp/lowpoly6.jpg &
-ibus-daemon &
+xbindkeys &
+ibus-daemon -drx &
 exec dwm
