@@ -12,3 +12,6 @@
 
 "amixer -q sset Master 5%+"
 	XF86AudioRaiseVolume
+
+"slock"
+  Mod4 + x
