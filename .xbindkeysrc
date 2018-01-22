@@ -15,3 +15,12 @@
 
 "slock"
   Mod4 + x
+
+"displayctl menu"
+  Mod4 + o
+
+"networkmanager_dmenu"
+  Mod4 + i
+
+"firefox"
+  Mod4 + b
