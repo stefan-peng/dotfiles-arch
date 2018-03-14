@@ -10,6 +10,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'altercation/vim-colors-solarized'
+Plug 'w0rp/ale'
 call plug#end()
 
 "Basic
@@ -59,3 +60,10 @@ nnoremap <Leader>p :!md2report<CR>
 "Layout
 set splitbelow
 set splitright
+
+"Linting
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
+autocmd bufwritepost *.js silent !standard --fix %
+set autoread
