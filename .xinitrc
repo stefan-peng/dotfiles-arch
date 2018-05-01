@@ -18,7 +18,7 @@ clipmenud &
 redshift &
 slstatus &
 xss-lock slock &
-feh --bg-fill ~/tmp/lowpoly6.png &
+feh --bg-fill ~/tmp/wallpaper.jpg &
 xbindkeys &
 ibus-daemon -drx &
-exec xmonad
+exec dwm
