@@ -261,7 +261,7 @@ myAltTerminal       = "st -e"
 myBrowser           = "chromium --force-device-scale-factor=2" 
 myFileManager       = "pcmanfm"
 myBrowserClass	    = "chromium"
-myStatusBar         = "xmobar -x0 /home/speng/.xmonad/xmobar.conf"
+myStatusBar         = "xmobar -x0 $HOME/.xmonad/xmobar.conf"
 --myLauncher          = "dmenu_run"
 --myLauncher          = "rofi -matching fuzzy -show run"
 myLauncher          = "rofi -matching fuzzy -modi combi -show combi -combi-modi run,drun"
@@ -1294,7 +1294,7 @@ myStartupHook = do
     -- init-tilingwm sets up all major "desktop environment" like components
     spawnOnce "$HOME/bin/wm/init-tilingwm"
     -- init-xmobars sets up xmobar
-    spawnOnce "$HOME/bin/wm/init-xmobars"
+    -- spawnOnce "$HOME/bin/wm/init-xmobars"
     -- spawn "/home/ethan/bin/wm/init-tilingwm"
     spawn "$HOME/bin/wm/init-wallpaper"
 

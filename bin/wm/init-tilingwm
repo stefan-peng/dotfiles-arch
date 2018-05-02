@@ -49,7 +49,7 @@ xss-lock slock &
 #eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 #export SSH_AUTH_SOCK
 
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 
 # ----------------------------------------------------------------------
@@ -84,7 +84,7 @@ xss-lock slock &
 
 # ----------------------------------------------------------------------
 # pulseaudio
-start-pulseaudio-x11 &
+#start-pulseaudio-x11 &
 
 
 # ----------------------------------------------------------------------
@@ -99,7 +99,7 @@ start-pulseaudio-x11 &
 # ----------------------------------------------------------------------
 # hide mouse cursor after a few seconds
 
-unclutter --timeout 2 --fork
+#unclutter --timeout 2 --fork
 
 
 # ----------------------------------------------------------------------

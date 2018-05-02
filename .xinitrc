@@ -1,11 +1,11 @@
 #!/bin/bash -x
 
-xrandr --auto
-xset -b
+#xrandr --auto
+#xset -b
 
 xrdb -load $HOME/.Xresources
 
-setxkbmap -model thinkpad -layout us -variant altgr-intl -option ctrl:nocaps
+#setxkbmap -model thinkpad -layout us -variant altgr-intl -option ctrl:nocaps
 
 /usr/bin/xsettingsd &
 xrandr --dpi 210
@@ -14,11 +14,11 @@ export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 
-clipmenud &
-redshift &
-slstatus &
-xss-lock slock &
-feh --bg-fill ~/tmp/wallpaper.jpg &
+#clipmenud &
+#redshift &
+#slstatus &
+#xss-lock slock &
+#feh --bg-fill ~/tmp/wallpaper.jpg &
 xbindkeys &
-ibus-daemon -drx &
-exec dwm
+#ibus-daemon -drx &
+exec xmonad
