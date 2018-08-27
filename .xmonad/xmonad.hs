@@ -228,7 +228,7 @@ projects =
 
     , Project   { projectName       = wsVIX
                 , projectDirectory  = "~/.xmonad"
-                , projectStartHook  = Just $ do runInTerm "-name vix" "vim ~/.xmonad/xmonad.hs"
+                , projectStartHook  = Just $ do runInTerm "-name vix" "nvim ~/.xmonad/xmonad.hs"
                                                 spawnOn wsVIX myTerminal
                                                 spawnOn wsVIX myTerminal
                 }

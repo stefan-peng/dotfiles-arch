@@ -4,7 +4,7 @@
 #stdname=en-us # arbitrary, descriptive only
 
 english="xkb:us:altgr-intl:eng"
-chinese=pinyin
+chinese=libpinyin
 french="xkb:fr::fra"
 spanish="xkb:es::spa"
 
