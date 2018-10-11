@@ -3,5 +3,5 @@ xmonad.hs:263:15: warning: [-Wtabs]
     Tab character found here, and in 19 further locations.
     Please use spaces instead.
     |
-263 | myBrowserClass      = "chromium"
+263 | myBrowserClass      = "google-chrome"
     |               ^^

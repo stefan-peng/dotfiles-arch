@@ -258,13 +258,13 @@ projects =
 
 myTerminal          = "urxvt"
 myAltTerminal       = "st -e"
-myBrowser           = "chromium --force-device-scale-factor=2" 
+myBrowser           = "google-chrome --force-device-scale-factor=2" 
 myFileManager       = "pcmanfm"
-myBrowserClass	    = "chromium"
+myBrowserClass	    = "google-chrome"
 myStatusBar         = "xmobar -x0 $HOME/.xmonad/xmobar.conf"
---myLauncher          = "dmenu_run"
+myLauncher          = "dmenu_run"
 --myLauncher          = "rofi -matching fuzzy -show run"
-myLauncher          = "rofi -matching fuzzy -modi combi -show combi -combi-modi run,drun"
+--myLauncher          = "rofi -matching fuzzy -modi combi -show combi -combi-modi run,drun"
 
 
 -- This system utilizes:

@@ -468,7 +468,7 @@ Xft.rgba      : rgb
 
 ! Fonts
 URxvt.allow_bold: false
-URxvt*font: xft:xos4 terminus:pixelsize=24
-URxvt*boldFont: xft:xos4 terminus:pixelsize=24
+URxvt*font: xft:terminus:size=18
+URxvt*boldFont: xft:terminus:size=18
 URxvt.intensityStyles: false
 
