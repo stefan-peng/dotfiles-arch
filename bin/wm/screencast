@@ -36,7 +36,7 @@ status () {
 
 start () {
 	FILENAME="$HOME/$SCRIPTNAME-$(date +'%Y-%m-%d-%H-%M-%S').$FILETYPE"
-	nvidia-settings --assign="0/AllowFlipping=0" &>/dev/null
+	#nvidia-settings --assign="0/AllowFlipping=0" &>/dev/null
 
 	getarea # sets W H X Y
 
@@ -56,7 +56,7 @@ stop () {
 	. $PIDFILE
 	kill -s INT $PID || notify-send "failed to kill recordscreen process"
 	rm $PIDFILE
-	nvidia-settings --assign="0/AllowFlipping=1" &>/dev/null
+	#nvidia-settings --assign="0/AllowFlipping=1" &>/dev/null
 	notify-send "Screen recording complete\n$(basename $FILENAME)"
 	echo -n $FILENAME | xclip -sel clipboard
 }

@@ -21,4 +21,5 @@ export XMODIFIERS=@im=ibus
 #feh --bg-fill ~/tmp/wallpaper.jpg &
 xbindkeys &
 #ibus-daemon -drx &
+displayctl &
 exec xmonad

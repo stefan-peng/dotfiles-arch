@@ -117,33 +117,6 @@ import XMonad.Layout.SimplestFloat
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 
--- taffybar specific
--- import System.Taffybar.Hooks.PagerHints (pagerHints)
--- to demo and comment out or remove
--- import XMonad.Layout.Master -- used to test a dynamic layout. worked, but will remove in lieu of sublayouts
--- import XMonad.Actions.CycleSelectedLayouts -- nice but doesn't work well with sublayouts
--- import XMonad.Actions.Plane
--- import XMonad.Layout.IndependentScreens
--- import XMonad.Util.Timer
--- recent windows from cycle windows -- couldn't get it working on quick try: revisit this
--- import XMonad.Actions.CycleWindows
--- testing -- not a lot of value added, or am I missing something
--- import XMonad.Hooks.Place
-----
--- following for the combocombo test from
--- http://xmonad.org/xmonad-docs/xmonad-contrib/src/XMonad-Config-Droundy.html
--- import XMonad.Layout.Square ( Square(Square) )
--- import XMonad.Layout.BoringWindows
--- import XMonad.Layout.Grid
-----
--- import XMonad.Layout.SimpleDecoration
--- testing -- couldn't get this to work
--- import XMonad.Layout.TrackFloating
--- testing
--- import XMonad.Hooks.ServerMode
--- import XMonad.Actions.Commands 
--- import Control.Concurrent (threadDelay)
-
 ------------------------------------------------------------------------}}}
 -- Main                                                                 {{{
 ---------------------------------------------------------------------------
@@ -154,8 +127,6 @@ main = do
 
     -- for independent screens
     -- nScreens <- countScreens
-
-    -- for taffybar, add pagerHints below
 
     xmonad 
         $ dynamicProjects projects
@@ -198,7 +169,7 @@ wsWRK   = "WRK"
 wsFLOAT = "FLT"
 
 -- myWorkspaces = map show [1..9]
-myWorkspaces = [wsGEN, wsWEB, wsVIX]
+myWorkspaces = [wsGEN, wsWEB, wsVIX, wsDMO, wsMON]
 
 projects :: [Project]
 projects =
@@ -229,8 +200,6 @@ projects =
     , Project   { projectName       = wsVIX
                 , projectDirectory  = "~/.xmonad"
                 , projectStartHook  = Just $ do runInTerm "-name vix" "vim ~/.xmonad/xmonad.hs"
-                                                spawnOn wsVIX myTerminal
-                                                spawnOn wsVIX myTerminal
                 }
 
     , Project   { projectName       = wsMON

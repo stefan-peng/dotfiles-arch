@@ -112,8 +112,8 @@ xss-lock slock &
 # ----------------------------------------------------------------------
 # start compositing for window transparency
 
-#compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
-compton -b --xrender-sync-fence &
+compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
+#compton -b --xrender-sync-fence &
 
 
 # ----------------------------------------------------------------------
