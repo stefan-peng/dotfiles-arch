@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # ----------------------------------------------------------------------
 # displayctl internal|external|span|spanex|mirror|auto
@@ -72,9 +72,9 @@ CONFIG=/home/$XUSER/.config/$SCRIPTNAME
 # Lock
 # ----------------------------------------------------------------------
 
-#LOCKFILE=/tmp/${SCRIPTNAME}.lock
-#exec 200>$LOCKFILE
-#flock -n 200 || { (>&2 echo "$SCRIPTNAME already running (locked)"); exit 1; }
+LOCKFILE=/tmp/${SCRIPTNAME}.lock
+exec 200>$LOCKFILE
+flock -n 200 || { (>&2 echo "$SCRIPTNAME already running (locked)"); exit 1; }
 
 # ----------------------------------------------------------------------
 # Main

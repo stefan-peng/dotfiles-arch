@@ -3,5 +3,20 @@ xmonad.hs:263:15: warning: [-Wtabs]
     Tab character found here, and in 19 further locations.
     Please use spaces instead.
     |
-263 | myBrowserClass      = "google-chrome"
+263 | myBrowserClass      = "chromium"
     |               ^^
+
+xmonad.hs:439:27: warning: [-Wdeprecations]
+    In the use of ‘spacing’ (imported from XMonad.Layout.Spacing):
+    Deprecated: "Use spacingRaw instead."
+    |
+439 |     mySpacing           = spacing gap
+    |                           ^^^^^^^
+
+xmonad.hs:977:31: warning: [-Wdeprecations]
+    In the use of ‘tryMessage_’
+    (imported from XMonad.Actions.MessageFeedback):
+    Deprecated: "Use tryMessageWithNoRefreshToCurrent instead."
+    |
+977 |     tryMsgR x y = sequence_ [(tryMessage_ x y), refresh]
+    |                               ^^^^^^^^^^^

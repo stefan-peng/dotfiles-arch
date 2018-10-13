@@ -122,7 +122,7 @@
 
 
 
-!! URxvt.font: -*-terminus-*-*-*-*-28-*-*-*-*-*-*-*
+URxvt.font: -*-terminus-*-*-*-*-28-*-*-*-*-*-*-*
 !! URxvt.font: -*-source code pro medium-*-*-*-*-17-*-*-*-*-*-*-*
 !! URxvt.font: xft:Source Code Pro Regular:size=11
 !!URxvt.keysym.C-3: command:\033]710;xft: Source Code Pro:size=6\007
@@ -468,7 +468,7 @@ Xft.rgba      : rgb
 
 ! Fonts
 URxvt.allow_bold: false
-URxvt*font: xft:terminus:size=18
-URxvt*boldFont: xft:terminus:size=18
+!URxvt*font: xft:xos4 Terminus:size=18
+!URxvt*boldFont: xft:xos4 Terminus:size=18
 URxvt.intensityStyles: false
 

@@ -228,7 +228,7 @@ projects =
 
     , Project   { projectName       = wsVIX
                 , projectDirectory  = "~/.xmonad"
-                , projectStartHook  = Just $ do runInTerm "-name vix" "nvim ~/.xmonad/xmonad.hs"
+                , projectStartHook  = Just $ do runInTerm "-name vix" "vim ~/.xmonad/xmonad.hs"
                                                 spawnOn wsVIX myTerminal
                                                 spawnOn wsVIX myTerminal
                 }
@@ -258,13 +258,13 @@ projects =
 
 myTerminal          = "urxvt"
 myAltTerminal       = "st -e"
-myBrowser           = "google-chrome --force-device-scale-factor=2" 
+myBrowser           = "chromium --force-device-scale-factor=2" 
 myFileManager       = "pcmanfm"
-myBrowserClass	    = "google-chrome"
+myBrowserClass	    = "chromium"
 myStatusBar         = "xmobar -x0 $HOME/.xmonad/xmobar.conf"
-myLauncher          = "dmenu_run"
+--myLauncher          = "dmenu_run"
 --myLauncher          = "rofi -matching fuzzy -show run"
---myLauncher          = "rofi -matching fuzzy -modi combi -show combi -combi-modi run,drun"
+myLauncher          = "rofi -matching fuzzy -modi combi -show combi -combi-modi run,drun"
 
 
 -- This system utilizes:
