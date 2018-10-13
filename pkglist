@@ -45,3 +45,9 @@ vdpauinfo
 bluez-utils
 bluez
 pulseaudio-bluetooth
+ibus-libpinyin
+ttf-arphic-uming
+ttf-arphic-ukai
+noto-fonts-extra
+noto-fonts-cjk
+xss-lock

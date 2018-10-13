@@ -13,6 +13,12 @@
 "amixer -q sset Master 5%+"
 	XF86AudioRaiseVolume
 
+"amixer -q sset Capture toggle"
+  XF86AudioMicMute
+
+"displayctl"
+  XF86Display
+
 "slock"
   Mod4 + x
 
