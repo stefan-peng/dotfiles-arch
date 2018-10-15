@@ -15,7 +15,8 @@ export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 
 #clipmenud &
-#redshift &
+/usr/lib/geoclue-2.0/demos/agent &
+redshift &
 #slstatus &
 #xss-lock slock &
 #feh --bg-fill ~/tmp/wallpaper.jpg &
