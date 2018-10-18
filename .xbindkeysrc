@@ -1,7 +1,7 @@
-"displayctl backlight down"
+"sudo brightness down"
 	XF86MonBrightnessDown
 
-"displayctl backlight up"
+"sudo brightness up"
 	XF86MonBrightnessUp
 
 "amixer -q sset Master toggle"

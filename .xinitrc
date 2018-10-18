@@ -3,9 +3,8 @@
 #xrandr --auto
 #xset -b
 
-xrdb -load $HOME/.Xresources
+xrdb -load "$HOME/.Xresources"
 
-#setxkbmap -model thinkpad -layout us -variant altgr-intl -option ctrl:nocaps
 
 /usr/bin/xsettingsd &
 xrandr --dpi 210
@@ -17,10 +16,16 @@ export XMODIFIERS=@im=ibus
 #clipmenud &
 /usr/lib/geoclue-2.0/demos/agent &
 redshift &
+
+# dwm only
 #slstatus &
 #xss-lock slock &
-#feh --bg-fill ~/tmp/wallpaper.jpg &
-xbindkeys &
+#feh --bg-fill ~/tmp/wallpaper &
 #ibus-daemon -drx &
+#setxkbmap -model thinkpad -layout us -variant altgr-intl -option ctrl:nocaps
+
+xbindkeys &
 displayctl &
+
+#exec dwm
 exec xmonad
