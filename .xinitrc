@@ -14,18 +14,19 @@ export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 
 #clipmenud &
-/usr/lib/geoclue-2.0/demos/agent &
+#/usr/lib/geoclue-2.0/demos/agent &
 redshift &
 
 # dwm only
-#slstatus &
-#xss-lock slock &
-#feh --bg-fill ~/tmp/wallpaper &
-#ibus-daemon -drx &
-#setxkbmap -model thinkpad -layout us -variant altgr-intl -option ctrl:nocaps
+slstatus &
+xss-lock slock &
+feh --bg-fill ~/tmp/wallpaper &
+ibus-daemon -drx &
+setxkbmap -model thinkpad -layout us -variant altgr-intl -option ctrl:nocaps
+compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
 
-xbindkeys &
-displayctl &
+#xbindkeys &
+#displayctl &
 
-#exec dwm
-exec xmonad
+exec dwm
+#exec xmonad
