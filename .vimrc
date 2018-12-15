@@ -27,7 +27,7 @@ set autowrite     " Automatically :write before running commands
 
 "Colors
 set background=dark
-"colorscheme solarized
+colorscheme solarized
 syntax on
 
 "Text

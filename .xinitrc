@@ -18,15 +18,15 @@ export XMODIFIERS=@im=ibus
 redshift &
 
 # dwm only
-slstatus &
-xss-lock slock &
-feh --bg-fill ~/tmp/wallpaper &
-ibus-daemon -drx &
-setxkbmap -model thinkpad -layout us -variant altgr-intl -option ctrl:nocaps
-compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
+#slstatus &
+#xss-lock slock &
+#feh --bg-fill ~/tmp/wallpaper &
+#ibus-daemon -drx &
+#setxkbmap -model thinkpad -layout us -variant altgr-intl -option ctrl:nocaps
+#compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
 
-#xbindkeys &
-#displayctl &
+xbindkeys &
+displayctl &
 
-exec dwm
-#exec xmonad
+#exec dwm
+exec xmonad
