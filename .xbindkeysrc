@@ -4,7 +4,7 @@
 "displayctl backlight up"
 	XF86MonBrightnessUp
 
-"amixer -q sset Master toggle"
+"amixer -q sset Master toggle; amixer -q sset Speaker toggle; amixer -q sset Headphones toggle"
 	XF86AudioMute
 
 "amixer -q sset Master 5%-"
