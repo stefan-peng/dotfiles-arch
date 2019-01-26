@@ -39,6 +39,7 @@ glibc
 grep
 groff
 grub
+gvfs
 gzip
 htop
 ibus
@@ -107,6 +108,8 @@ tor-browser
 ttf-arphic-ukai
 ttf-arphic-uming
 ttf-croscore
+udevil
+udisks2
 usbutils
 util-linux
 vdpauinfo
