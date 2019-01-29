@@ -9,7 +9,7 @@ bison
 bluez
 bluez-utils
 bzip2
-chromium-vaapi-bin
+chromium
 compton
 coreutils
 cryptsetup
@@ -61,6 +61,7 @@ linux
 linux-firmware
 logrotate
 lvm2
+lxsession
 m4
 maim
 make
@@ -94,9 +95,11 @@ screenkey
 sed
 shadow
 slock
+spacefm
 spotify
 stow
 sudo
+syncthing
 sysfsutils
 systemd
 systemd-sysvcompat
@@ -110,6 +113,7 @@ ttf-arphic-uming
 ttf-croscore
 udevil
 udisks2
+unzip
 usbutils
 util-linux
 vdpauinfo

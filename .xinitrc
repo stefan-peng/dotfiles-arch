@@ -16,6 +16,7 @@ export XMODIFIERS=@im=ibus
 #clipmenud &
 #/usr/lib/geoclue-2.0/demos/agent &
 redshift &
+syncthing &
 
 # dwm only
 #slstatus &
@@ -26,7 +27,7 @@ redshift &
 #compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
 
 xbindkeys &
-displayctl &
+#displayctl &
 
 #exec dwm
 exec xmonad
