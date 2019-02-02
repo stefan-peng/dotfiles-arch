@@ -16,7 +16,6 @@ cryptsetup
 device-mapper
 dhcpcd
 diffutils
-dmenu
 dunst
 e2fsprogs
 efibootmgr
@@ -111,8 +110,11 @@ tor-browser
 ttf-arphic-ukai
 ttf-arphic-uming
 ttf-croscore
+ttf-dejavu
+ttf-liberation
 udevil
 udisks2
+ufw
 unzip
 usbutils
 util-linux
