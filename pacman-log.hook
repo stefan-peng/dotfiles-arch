@@ -1,3 +1,4 @@
+# copy to /usr/share/libalpm/hooks/
 [Trigger]
 Operation = Install
 Operation = Remove

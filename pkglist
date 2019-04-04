@@ -27,7 +27,7 @@ filesystem
 findutils
 firefox
 flex
-fwupdate
+fwupd
 gawk
 gcc
 gcc-libs
@@ -70,6 +70,7 @@ mdadm
 mesa-demos
 nano
 netctl
+network-manager-applet
 networkmanager
 networkmanager-dmenu-git
 noto-fonts-cjk
@@ -82,8 +83,10 @@ pcmanfm
 perl
 pkgconf
 powertop
+pptpclient
 procps-ng
 psmisc
+pulseaudio
 pulseaudio-bluetooth
 redshift
 reiserfsprogs
@@ -98,7 +101,6 @@ spacefm
 spotify
 stow
 sudo
-syncthing
 sysfsutils
 systemd
 systemd-sysvcompat
@@ -106,12 +108,14 @@ tar
 terminus-font
 texinfo
 tlp
+tmux
 tor-browser
 ttf-arphic-ukai
 ttf-arphic-uming
 ttf-croscore
 ttf-dejavu
 ttf-liberation
+ttf-unifont
 udevil
 udisks2
 ufw

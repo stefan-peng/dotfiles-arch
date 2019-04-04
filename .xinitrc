@@ -16,7 +16,7 @@ export XMODIFIERS=@im=ibus
 #clipmenud &
 #/usr/lib/geoclue-2.0/demos/agent &
 redshift &
-syncthing &
+#syncthing &
 
 # dwm only
 #slstatus &
