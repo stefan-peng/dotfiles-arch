@@ -4,16 +4,16 @@
 "displayctl backlight up"
 	XF86MonBrightnessUp
 
-"amixer -q sset Master toggle; amixer -q sset Speaker toggle; amixer -q sset Headphones toggle"
+"pactl set-sink-mute @DEFAULT_SINK@ toggle"
 	XF86AudioMute
 
-"amixer -q sset Master 5%-"
+"pactl set-sink-volume @DEFAULT_SINK@ -5%"
 	XF86AudioLowerVolume
 
-"amixer -q sset Master 5%+"
+"pactl set-sink-volume @DEFAULT_SINK@ +5%"
 	XF86AudioRaiseVolume
 
-"amixer -q sset Capture toggle"
+"pactl set-source-mute @DEFAULT_SOURCE@ toggle"
   XF86AudioMicMute
 
 "displayctl"
