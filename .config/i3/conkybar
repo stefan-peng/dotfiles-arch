@@ -74,10 +74,8 @@ conky.text = [[
       "separator_block_width": 0
     },
     {
-      #linux mint
-      "full_text": "  ${execi 2 amixer get Master | grep % | awk '{print $4}' | sed 's/[^0-9\%]//g' | head -n1} ",
       #arch linux
-      "full_text": "  ${execi 2 amixer get Master | grep % | awk '{print $5}' | sed 's/[^0-9\%]//g' | head -n1} ",
+      "full_text": "  ${execi 2 amixer get Master | grep % | awk '{print $4}' | sed 's/[^0-9\%]//g' | head -n1} ",
       "color": "\#2a2a2a",
       "background": "\#bec55b",
       "separator": true,
@@ -91,7 +89,7 @@ conky.text = [[
       "separator_block_width": 0
     },
     {
-      "full_text": "  ${time %a, %d/%m/%y} ",
+      "full_text": "  ${time %a %d/%m/%y} ",
       "color": "\#2a2a2a",
       "background": "\#8ab3d5",
       "separator": true,
