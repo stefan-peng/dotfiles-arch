@@ -1,69 +1,108 @@
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+"                                 ___     
+"        ___        ___          /__/\    
+"       /__/\      /  /\        |  |::\   
+"       \  \:\    /  /:/        |  |:|:\  
+"        \  \:\  /__/::\      __|__|:|\:\ 
+"    ___  \__\:\ \__\/\:\__  /__/::::| \:\
+"   /__/\ |  |:|    \  \:\/\ \  \:\~~\__\/
+"   \  \:\|  |:|     \__\::/  \  \:\      
+"    \  \:\__|:|     /__/:/    \  \:\     
+"     \__\::::/      \__\/      \  \:\    
+"         ~~~~                   \__\/    
 
-call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-sensible'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'junegunn/goyo.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'w0rp/ale'
-call plug#end()
+ " Set compatibility to Vim only.
+set nocompatible
 
-"Basic
-set backspace=2   " Backspace deletes like most programs in insert mode
-set nobackup
-set nowritebackup
-set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set history=50
-set ruler         " show the cursor position all the time
-set showcmd       " display incomplete commands
-set incsearch     " do incremental searching
-set laststatus=2  " Always display the status line
-set autowrite     " Automatically :write before running commands
+"Always show current position
+set ruler
 
-"Colors
-set background=dark
-"colorscheme solarized
+" Turn on syntax highlighting.
 syntax on
 
-"Text
-set linebreak
-set nojoinspaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
+" Turn off modelines
+set modelines=0
+
+" Uncomment below to set the max textwidth. Use a value corresponding to the width of your screen.
+" set textwidth=80
+set formatoptions=tcqrn1
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
+set noshiftround
 
-"Markdown
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_conceal = 0
-let g:tex_conceal = ""
-let g:vim_markdown_math = 1
-let g:vim_markdown_math = 1
-let g:vim_markdown_frontmatter = 1
+" Ignore case when searching
+set ignorecase
 
-"Bindings
-let mapleader = " "
-nnoremap <Leader>t :TableFormat<CR>
-nnoremap <Leader><Leader> <c-^>
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-nnoremap <Leader>g :Goyo<CR>
-nnoremap <Leader>p :!md2report<CR>
+" When searching try to be smart about cases 
+set smartcase
 
-"Layout
-set splitbelow
-set splitright
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
 
-"Linting
-let g:ale_linters = {
-\   'javascript': ['standard'],
-\}
-autocmd bufwritepost *.js silent !standard --fix %
-set autoread
+" For regular expressions turn magic on
+set magic
+
+" Display 5 lines above/below the cursor when scrolling with a mouse.
+set scrolloff=5
+" Fixes common backspace problems
+set backspace=indent,eol,start
+
+" Display options
+set showmode
+set showcmd
+set cmdheight=1
+
+" Highlight matching pairs of brackets. Use the '%' character to jump between them.
+set matchpairs+=<:>
+
+" Display different types of white spaces.
+"set list
+"set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+
+" Show line numbers
+set number
+highlight LineNr ctermfg=black
+
+" Set status line display
+set laststatus=2
+hi StatusLine ctermfg=NONE ctermbg=red cterm=NONE
+hi StatusLineNC ctermfg=black ctermbg=red cterm=NONE
+hi User1 ctermfg=black ctermbg=magenta
+hi User2 ctermfg=NONE ctermbg=NONE
+hi User3 ctermfg=black ctermbg=blue
+hi User4 ctermfg=black ctermbg=cyan
+set statusline=\                    " Padding
+set statusline+=%f                  " Path to the file
+set statusline+=\ %1*\              " Padding & switch colour
+set statusline+=%y                  " File type
+set statusline+=\ %2*\              " Padding & switch colour
+set statusline+=%=                  " Switch to right-side
+set statusline+=\ %3*\              " Padding & switch colour
+set statusline+=line                " of Text
+set statusline+=\                   " Padding
+set statusline+=%l                  " Current line
+set statusline+=\ %4*\              " Padding & switch colour
+set statusline+=of                  " of Text
+set statusline+=\                   " Padding
+set statusline+=%L                  " Total line
+set statusline+=\                   " Padding
+
+" Encoding
+set encoding=utf-8
+
+" Highlight matching search patterns
+set hlsearch
+
+" Enable incremental search
+set incsearch
+
+" Include matching uppercase words with lowercase search term
+set ignorecase
+
+" Include only uppercase words with uppercase search term
+set smartcase
+
+" Store info from no more than 100 files at a time, 9999 lines of text
+" 100kb of data. Useful for copying large amounts of data between files.
+set viminfo='100,<9999,s100

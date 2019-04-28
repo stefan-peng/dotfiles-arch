@@ -150,7 +150,7 @@ pkill xsettingsd
 xsettingsd &
 
 ## set the wallpaper
-feh --bg-fill ~/.wallpaper.jpg
+feh --bg-fill ~/.config/bspwm/wallpaper.jpg
 
 ## load dunst
 pkill dunst
@@ -160,9 +160,9 @@ dunst &
 xsetroot -cursor_name left_ptr
 
 ## load panel script
-#pkill panel-bspwm
-#panel-bspwm &
+pkill panel-bspwm
+panel-bspwm &
 
 ## or polybar?
-pkill polybar
-polybar -c ~/.config/bspwm/polybar top &
+#pkill polybar
+#polybar -c ~/.config/bspwm/polybar top &
