@@ -15,6 +15,8 @@ Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
+Plug 'taohexxx/lightline-solarized'
 call plug#end()
 
 "Basic
@@ -30,9 +32,17 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
 "Colors
+if !has('gui_running')
+  set t_Co=256
+endif
+syntax enable
 set background=dark
-colorscheme gruvbox
-syntax on
+let g:solarized_termtrans = 1
+colorscheme solarized
+
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
 
 "Text
 set linebreak
@@ -49,6 +59,8 @@ let g:tex_conceal = ""
 let g:vim_markdown_math = 1
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
+
+autocmd BufNewFile,BufFilePre,BufRead *.md hi link mkdLineBreak Underlined
 
 "Latex
 let g:tex_flavor='latex'
@@ -67,6 +79,13 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <Leader>g :Goyo<CR>
 nnoremap <Leader>p :!md2report<CR>
+
+" Yank text to the OS X clipboard
+noremap <leader>y "*y
+noremap <leader>yy "*Y
+
+" Preserve indentation while pasting text from the OS X clipboard
+noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 "Layout
 set splitbelow
