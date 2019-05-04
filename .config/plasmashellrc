@@ -1,0 +1,56 @@
+[Containments][19][General]
+AppletOrder=20;21;23;25
+
+[Containments][24][General]
+extraItems=org.kde.plasma.bluetooth,org.kde.plasma.battery,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.vault,org.kde.discovernotifier
+knownItems=org.kde.plasma.bluetooth,org.kde.plasma.battery,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.vault,org.kde.discovernotifier
+
+[FileDialogSize]
+Height 1440=673
+Width 2560=1055
+
+[KFileDialog Settings]
+Recent Files[$e]=file:$HOME/.config/bspwm/wallpaper2.jpg,file:$HOME/.config/bspwm/wallpaper.jpg,file:$HOME/.config/bspwm/wallpaper2.jpg
+
+[PlasmaRunnerManager]
+LaunchCounts=1 services_autostart.desktop,1 services_kcm_keyboard.desktop,1 services_kcm_kscreen.desktop,1 services_vim.desktop,2 services_termite.desktop,5 services_gvim.desktop,1 services_systemsettings.desktop,3 desktopsessions_1,1 services_kcmsmserver.desktop,8 services_org.kde.konsole.desktop
+pluginWhiteList=services,places,desktopsessions,PowerDevil,shell,bookmarks,recentdocuments,locations,baloosearch
+
+[PlasmaViews][Panel 110][Horizontal2560]
+thickness=76
+
+[PlasmaViews][Panel 129][Horizontal2560]
+thickness=76
+
+[PlasmaViews][Panel 148][Horizontal1920]
+thickness=30
+
+[PlasmaViews][Panel 148][Horizontal2560]
+thickness=76
+
+[PlasmaViews][Panel 19][Horizontal2560]
+thickness=76
+
+[PlasmaViews][Panel 2][Horizontal2560]
+thickness=36
+
+[PlasmaViews][Panel 20][Horizontal2560]
+thickness=76
+
+[PlasmaViews][Panel 37][Horizontal2560]
+thickness=76
+
+[PlasmaViews][Panel 54][Horizontal2560]
+thickness=76
+
+[PlasmaViews][Panel 72][Horizontal2560]
+thickness=76
+
+[PlasmaViews][Panel 91][Horizontal2560]
+thickness=76
+
+[ScreenConnectors]
+0=eDP1
+
+[Updates]
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js

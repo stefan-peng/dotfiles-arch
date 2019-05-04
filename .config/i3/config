@@ -1,7 +1,7 @@
 set $mod mod4
 set $alt mod1
 
-font pango:Roboto 8
+font pango:M+ 1m 8
 
 ## espresso dark color scheme
 #set $background #ffffff
@@ -34,14 +34,15 @@ set $ws8  "8: 8"
 floating_modifier $mod
 
 ## autostart
+exec --no-startup-id sxhkd
 exec --no-startup-id xmodmap ~/.Xmodmap
-#exec --no-startup-id xfce4-power-manager
-#exec --no-startup-id xfsettingsd
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xfsettingsd
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id compton -b
 exec --no-startup-id xsettingsd
 #exec --no-startup-id polybar -c ~/.config/i3/polybar top
-#exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 
 ## music is my only friend
 exec --no-startup-id mpd
@@ -71,9 +72,9 @@ bindsym $mod+l exec i3lock-fancy
 bindsym $mod+BackSpace kill
 
 ## volume control
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master '5%+'
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master '5%-'
-bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec set-sink-volume @DEFAULT_SINK@ toggle
 
 ## music control
 bindsym XF86AudioNext exec mpc next
@@ -246,7 +247,7 @@ bar {
 
     height 36
     workspace_buttons yes
-    font pango:Noto Sans 8
+    font pango:M+ 1m 8
     status_command ~/.config/i3/conkybar.sh
 colors {
         background $background

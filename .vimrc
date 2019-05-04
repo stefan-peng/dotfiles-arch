@@ -38,7 +38,7 @@ endif
 syntax enable
 set background=dark
 let g:solarized_termtrans = 1
-colorscheme gruvbox
+"colorscheme gruvbox
 
 let g:lightline = {
       \ 'colorscheme': 'solarized',

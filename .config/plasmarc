@@ -1,0 +1,5 @@
+[Theme]
+name=default
+
+[Wallpapers]
+usersWallpapers=/home/stefan/dotfiles-arch/.config/bspwm/wallpaper.jpg,/home/stefan/dotfiles-arch/.config/bspwm/wallpaper2.jpg

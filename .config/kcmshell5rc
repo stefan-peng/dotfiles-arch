@@ -1,0 +1,11 @@
+[KFileDialog Settings]
+Recent Files[$e]=kde-bspwm,file:$HOME/.bin/kde-bspwm.sh
+Recent URLs[$e]=file:$HOME/.bin/
+
+[KPropertiesDialog]
+Height 720=464
+Width 1280=418
+
+[Open-with settings]
+CompletionMode=1
+History=/home/stefan/.bin/kde-bspwm

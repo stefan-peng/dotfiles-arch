@@ -24,8 +24,8 @@ super + Return
 #	termite
 
 ## volume control
-XF86Audio{RaiseVolume,LowerVolume,Mute,MicMute}
-	amixer {-c 0 set PCM 4dB+,-c 0 set PCM 4dB-,set Master toggle,set Capture toggle}
+XF86Audio{RaiseVolume,LowerVolume,AudioMute,MicMute}
+	pactl {set-sink-volume @DEFAULT_SINK@ +5%,set-sink-volume @DEFAULT_SINK@ -5%,set-sink-mute 0 toggle,set-source-mute @DEFAULT_SOURCE@ toggle}
 
 ## brightness control
 XF86MonBrightness{Up,Down}
@@ -37,7 +37,7 @@ XF86Audio{Next,Prev,Play,Stop}
 
 ## program launcher
 super + d
-	rofi -modi run,drun,window -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font "Noto Sans 16"
+  rofi -show drun
 
 ## make sxhkd reload its configuration files
 super + s
@@ -57,7 +57,7 @@ super + shift + g
 
 ## fancy lockscreen :)
 super + l
-	i3lock
+	i3lock --color=282828
 	
 ## take a screenshot
 Print
@@ -159,3 +159,12 @@ super + alt + {Left,Right,Up,Down}
 ## move floating windows
 alt + shift + {Left,Down,Up,Right}
 	bspc node -v {-10 0,0 10,0 -10,10 0}
+
+XF86Display
+	displayctl
+
+super + o
+	displayctl menu
+
+super + i
+	networkmanager_dmenu

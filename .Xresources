@@ -3,9 +3,7 @@
 ! ------------------------------------------------------------------------------
 
 #include ".xrdb/color/nord"
-#include ".xrdb/rofi/nord"
-#include ".xrdb/dmenu/nord"
-#include ".xrdb/fonts/tewi"
+#include ".xrdb/fonts/mplus"
 
 ! ------------------------------------------------------------------------------
 ! URxvt configs
@@ -33,7 +31,7 @@ URxvt.keysym.Shift-Up:	command:\033]720;1\007
 URxvt.keysym.Shift-Down:command:\033]721;1\007
 URxvt.keysym.M-s:       perl:keyboard-select:search
 URxvt.keysym.M-u:       perl:url-select:select_next
-URxvt.urlLauncher:      firefox
+URxvt.urlLauncher:      chromium
 URxvt.underlineURLs:    true
 URxvt.urlButton:        1
 URxvt*buffered:         false          

@@ -1,0 +1,48 @@
+2019/04/28-13:51:04.335 746f Reusing MANIFEST /home/stefan/.config/chromium/Default/IndexedDB/https_to-do.microsoft.com_0.indexeddb.leveldb/MANIFEST-000001
+2019/04/28-13:51:04.335 746f Recovering log #14
+2019/04/28-13:51:04.338 746f Reusing old log /home/stefan/.config/chromium/Default/IndexedDB/https_to-do.microsoft.com_0.indexeddb.leveldb/000014.log 
+2019/04/28-13:51:04.368 7470 Current memtable full; waiting...
+2019/04/28-13:51:04.368 76b0 Level-0 table #19: started
+2019/04/28-13:51:04.380 76b0 Level-0 table #19: 145034 bytes OK
+2019/04/28-13:51:04.384 76b0 Delete type=0 #14
+2019/04/28-13:51:04.385 76b0 Level-0 table #21: started
+2019/04/28-13:51:04.385 76b0 Level-0 table #21: 0 bytes OK
+2019/04/28-13:51:04.394 76b0 Delete type=0 #18
+2019/04/28-13:51:04.395 76b0 Manual compaction at level-0 from '\x00\x05\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at '\x00\x05\x00\x00\x05' @ 1266 : 1
+2019/04/28-13:51:04.395 76b0 Compacting 1@0 + 1@1 files
+2019/04/28-13:51:04.447 76b0 Generated table #22@0: 805 keys, 136089 bytes
+2019/04/28-13:51:04.447 76b0 Compacted 1@0 + 1@1 files => 136089 bytes
+2019/04/28-13:51:04.451 76b0 compacted to: files[ 0 1 1 0 0 0 0 ]
+2019/04/28-13:51:04.452 76b0 Delete type=2 #16
+2019/04/28-13:51:04.452 76b0 Delete type=2 #19
+2019/04/28-13:51:04.452 76b0 Manual compaction at level-0 from '\x00\x05\x00\x00\x05' @ 1266 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at (end)
+2019/04/28-13:51:04.482 7470 Current memtable full; waiting...
+2019/04/28-13:51:04.483 76b0 Level-0 table #24: started
+2019/04/28-13:51:04.488 76b0 Level-0 table #24: 366 bytes OK
+2019/04/28-13:51:04.494 76b0 Delete type=0 #20
+2019/04/28-13:51:04.495 76b0 Level-0 table #26: started
+2019/04/28-13:51:04.495 76b0 Level-0 table #26: 0 bytes OK
+2019/04/28-13:51:04.504 76b0 Delete type=0 #23
+2019/04/28-13:51:04.504 76b0 Manual compaction at level-0 from '\x00\x06\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at '\x00\x06\x00\x00\x05' @ 1275 : 1
+2019/04/28-13:51:04.504 76b0 Compacting 1@0 + 1@1 files
+2019/04/28-13:51:04.525 76b0 Generated table #27@0: 805 keys, 136087 bytes
+2019/04/28-13:51:04.525 76b0 Compacted 1@0 + 1@1 files => 136087 bytes
+2019/04/28-13:51:04.532 76b0 compacted to: files[ 0 1 1 0 0 0 0 ]
+2019/04/28-13:51:04.533 76b0 Delete type=2 #22
+2019/04/28-13:51:04.534 76b0 Delete type=2 #24
+2019/04/28-13:51:04.534 76b0 Manual compaction at level-0 from '\x00\x06\x00\x00\x05' @ 1275 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at (end)
+2019/04/28-13:51:04.565 7470 Current memtable full; waiting...
+2019/04/28-13:51:04.566 76b0 Level-0 table #29: started
+2019/04/28-13:51:04.571 76b0 Level-0 table #29: 366 bytes OK
+2019/04/28-13:51:04.577 76b0 Delete type=0 #25
+2019/04/28-13:51:04.577 76b0 Level-0 table #31: started
+2019/04/28-13:51:04.578 76b0 Level-0 table #31: 0 bytes OK
+2019/04/28-13:51:04.586 76b0 Delete type=0 #28
+2019/04/28-13:51:04.586 76b0 Manual compaction at level-0 from '\x00\x07\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x08\x00\x00\x00' @ 0 : 0; will stop at '\x00\x07\x00\x00\x05' @ 1284 : 1
+2019/04/28-13:51:04.586 76b0 Compacting 1@0 + 1@1 files
+2019/04/28-13:51:04.602 76b0 Generated table #32@0: 805 keys, 136089 bytes
+2019/04/28-13:51:04.602 76b0 Compacted 1@0 + 1@1 files => 136089 bytes
+2019/04/28-13:51:04.608 76b0 compacted to: files[ 0 1 1 0 0 0 0 ]
+2019/04/28-13:51:04.608 76b0 Delete type=2 #27
+2019/04/28-13:51:04.608 76b0 Delete type=2 #29
+2019/04/28-13:51:04.609 76b0 Manual compaction at level-0 from '\x00\x07\x00\x00\x05' @ 1284 : 1 .. '\x00\x08\x00\x00\x00' @ 0 : 0; will stop at (end)

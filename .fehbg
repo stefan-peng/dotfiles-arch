@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --bg-fill '/home/stefan/.config/bspwm/wallpaper.jpg' 

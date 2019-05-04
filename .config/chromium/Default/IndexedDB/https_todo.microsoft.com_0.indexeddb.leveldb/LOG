@@ -1,0 +1,63 @@
+2019/04/28-14:26:34.028 ea6 Reusing MANIFEST /home/stefan/.config/chromium/Default/IndexedDB/https_todo.microsoft.com_0.indexeddb.leveldb/MANIFEST-000001
+2019/04/28-14:26:34.028 ea6 Recovering log #40
+2019/04/28-14:26:34.028 ea6 Reusing old log /home/stefan/.config/chromium/Default/IndexedDB/https_todo.microsoft.com_0.indexeddb.leveldb/000040.log 
+2019/04/28-14:26:34.058 ea6 Current memtable full; waiting...
+2019/04/28-14:26:34.062 f34 Level-0 table #45: started
+2019/04/28-14:26:34.067 f34 Level-0 table #45: 366 bytes OK
+2019/04/28-14:26:34.073 f34 Delete type=0 #40
+2019/04/28-14:26:34.074 f34 Level-0 table #47: started
+2019/04/28-14:26:34.074 f34 Level-0 table #47: 0 bytes OK
+2019/04/28-14:26:34.083 f34 Delete type=0 #44
+2019/04/28-14:26:34.083 f34 Manual compaction at level-0 from '\x00\x09\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0a\x00\x00\x00' @ 0 : 0; will stop at '\x00\x09\x00\x00\x05' @ 336 : 1
+2019/04/28-14:26:34.083 f34 Compacting 1@0 + 1@1 files
+2019/04/28-14:26:34.088 f34 Generated table #48@0: 5 keys, 468 bytes
+2019/04/28-14:26:34.088 f34 Compacted 1@0 + 1@1 files => 468 bytes
+2019/04/28-14:26:34.092 f34 compacted to: files[ 0 1 1 0 0 0 0 ]
+2019/04/28-14:26:34.093 f34 Delete type=2 #42
+2019/04/28-14:26:34.096 f34 Delete type=2 #45
+2019/04/28-14:26:34.096 f34 Manual compaction at level-0 from '\x00\x09\x00\x00\x05' @ 336 : 1 .. '\x00\x0a\x00\x00\x00' @ 0 : 0; will stop at (end)
+2019/04/28-14:26:34.122 ea6 Current memtable full; waiting...
+2019/04/28-14:26:34.123 f34 Level-0 table #50: started
+2019/04/28-14:26:34.129 f34 Level-0 table #50: 364 bytes OK
+2019/04/28-14:26:34.134 f34 Delete type=0 #46
+2019/04/28-14:26:34.134 f34 Level-0 table #52: started
+2019/04/28-14:26:34.134 f34 Level-0 table #52: 0 bytes OK
+2019/04/28-14:26:34.142 f34 Delete type=0 #49
+2019/04/28-14:26:34.143 f34 Manual compaction at level-0 from '\x00\x0a\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0b\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0a\x00\x00\x05' @ 345 : 1
+2019/04/28-14:26:34.143 f34 Compacting 1@0 + 1@1 files
+2019/04/28-14:26:34.148 f34 Generated table #53@0: 5 keys, 468 bytes
+2019/04/28-14:26:34.148 f34 Compacted 1@0 + 1@1 files => 468 bytes
+2019/04/28-14:26:34.153 f34 compacted to: files[ 0 1 1 0 0 0 0 ]
+2019/04/28-14:26:34.154 f34 Delete type=2 #48
+2019/04/28-14:26:34.154 f34 Delete type=2 #50
+2019/04/28-14:26:34.154 f34 Manual compaction at level-0 from '\x00\x0a\x00\x00\x05' @ 345 : 1 .. '\x00\x0b\x00\x00\x00' @ 0 : 0; will stop at (end)
+2019/04/28-14:26:34.179 ee3 Current memtable full; waiting...
+2019/04/28-14:26:34.179 f34 Level-0 table #55: started
+2019/04/28-14:26:34.185 f34 Level-0 table #55: 364 bytes OK
+2019/04/28-14:26:34.191 f34 Delete type=0 #51
+2019/04/28-14:26:34.193 f34 Level-0 table #57: started
+2019/04/28-14:26:34.193 f34 Level-0 table #57: 0 bytes OK
+2019/04/28-14:26:34.202 f34 Delete type=0 #54
+2019/04/28-14:26:34.203 f34 Manual compaction at level-0 from '\x00\x0b\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0c\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0b\x00\x00\x05' @ 354 : 1
+2019/04/28-14:26:34.203 f34 Compacting 1@0 + 1@1 files
+2019/04/28-14:26:34.210 f34 Generated table #58@0: 5 keys, 468 bytes
+2019/04/28-14:26:34.210 f34 Compacted 1@0 + 1@1 files => 468 bytes
+2019/04/28-14:26:34.216 f34 compacted to: files[ 0 1 1 0 0 0 0 ]
+2019/04/28-14:26:34.219 f34 Delete type=2 #53
+2019/04/28-14:26:34.220 f34 Delete type=2 #55
+2019/04/28-14:26:34.220 f34 Manual compaction at level-0 from '\x00\x0b\x00\x00\x05' @ 354 : 1 .. '\x00\x0c\x00\x00\x00' @ 0 : 0; will stop at (end)
+2019/04/28-14:26:34.284 ee3 Current memtable full; waiting...
+2019/04/28-14:26:34.284 f34 Level-0 table #60: started
+2019/04/28-14:26:34.289 f34 Level-0 table #60: 1649 bytes OK
+2019/04/28-14:26:34.294 f34 Delete type=0 #56
+2019/04/28-14:26:34.295 f34 Level-0 table #62: started
+2019/04/28-14:26:34.295 f34 Level-0 table #62: 0 bytes OK
+2019/04/28-14:26:34.303 f34 Delete type=0 #59
+2019/04/28-14:26:34.303 f34 Manual compaction at level-0 from '\x00\x0c\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0d\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0c\x00\x00\xc8\x05\x00t\x00a\x00s\x00k\x00s' @ 428 : 1
+2019/04/28-14:26:34.303 f34 Compacting 1@0 + 1@1 files
+2019/04/28-14:26:34.308 f34 Generated table #63@0: 5 keys, 468 bytes
+2019/04/28-14:26:34.308 f34 Compacted 1@0 + 1@1 files => 468 bytes
+2019/04/28-14:26:34.313 f34 compacted to: files[ 0 1 1 0 0 0 0 ]
+2019/04/28-14:26:34.314 f34 Delete type=2 #58
+2019/04/28-14:26:34.314 f34 Delete type=2 #60
+2019/04/28-14:26:34.314 f34 Manual compaction at level-0 from '\x00\x0c\x00\x00\xc8\x05\x00t\x00a\x00s\x00k\x00s' @ 428 : 1 .. '\x00\x0d\x00\x00\x00' @ 0 : 0; will stop at (end)

@@ -1,0 +1,5 @@
+2019/05/03-20:20:28.392 cf5 Recovering log #59
+2019/05/03-20:20:28.392 cf5 Level-0 table #61: started
+2019/05/03-20:20:28.417 cf5 Level-0 table #61: 739 bytes OK
+2019/05/03-20:20:28.434 cf5 Delete type=0 #59
+2019/05/03-20:20:28.434 cf5 Delete type=3 #57

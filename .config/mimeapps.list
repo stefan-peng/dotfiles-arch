@@ -1,0 +1,17 @@
+[Added Associations]
+image/jpeg=feh.desktop;
+text/markdown=geany.desktop;vim.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
+application/pdf=libreoffice-draw.desktop;mupdf.desktop;
+application/x-shellscript=geany.desktop;vim.desktop;
+x-scheme-handler/http=exo-web-browser.desktop
+x-scheme-handler/https=exo-web-browser.desktop
+
+[Default Applications]
+text/html=chromium.desktop
+x-scheme-handler/http=chromium.desktop
+x-scheme-handler/https=chromium.desktop
+x-scheme-handler/about=chromium.desktop
+x-scheme-handler/unknown=chromium.desktop
+application/pdf=mupdf.desktop
+

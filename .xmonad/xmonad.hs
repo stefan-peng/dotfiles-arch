@@ -1263,16 +1263,16 @@ myMouseBindings (XConfig {XMonad.modMask = myModMask}) = M.fromList $
 myStartupHook = do
 
     -- init-tilingwm sets up all major "desktop environment" like components
-    spawnOnce "$HOME/bin/wm/init-tilingwm"
+    spawnOnce "$HOME/.bin/init-tilingwm"
     -- init-xmobars sets up xmobar
-    -- spawnOnce "$HOME/bin/wm/init-xmobars"
-    -- spawn "/home/ethan/bin/wm/init-tilingwm"
-    spawn "$HOME/bin/wm/init-wallpaper"
+    -- spawnOnce "$HOME/.bin/init-xmobars"
+    -- spawn "/home/ethan/.bin/init-tilingwm"
+    spawn "$HOME/.bin/init-wallpaper"
 
     -- init-tray kills and restarts stalone tray, hence just "spawn" so it
     -- runs on restart and will suffice to reposition tray on display changes
     -- TODO: evaluate moving to a "restart tray only" option on display change
-    -- spawn     "$HOME/bin/wm/init-tray"
+    -- spawn     "$HOME/.bin/init-tray"
 
     setDefaultCursor xC_left_ptr
 

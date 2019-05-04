@@ -1,0 +1,9 @@
+rofi.modi:    window,drun,ssh
+rofi.font:          M+ 1mn 16
+rofi.columns: 3
+rofi.lines: 12
+rofi.padding: 18
+rofi.width: 60
+rofi.location: 0
+rofi.sidebar-mode: true
+rofi.theme: /usr/share/rofi/themes/gruvbox-dark.rasi

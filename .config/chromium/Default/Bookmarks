@@ -1,0 +1,39 @@
+{
+   "checksum": "d38c3280a9e4eae0dc1e93b93313bdba",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13201372438250272",
+            "id": "5",
+            "meta_info": {
+               "last_visited_desktop": "13201372680035207"
+            },
+            "name": "(unknown device) | Syncthing",
+            "type": "url",
+            "url": "http://127.0.0.1:8384/"
+         } ],
+         "date_added": "13201372184958926",
+         "date_modified": "13201372438250272",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13201372184958953",
+         "date_modified": "0",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13201372184958954",
+         "date_modified": "0",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}
