@@ -1,7 +1,7 @@
-"displayctl backlight down"
+"xbacklight -dec 10"
 	XF86MonBrightnessDown
 
-"displayctl backlight up"
+"xbacklight -inc 10"
 	XF86MonBrightnessUp
 
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
