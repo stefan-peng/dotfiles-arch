@@ -9,14 +9,14 @@ Plug 'tpope/vim-sensible'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'morhetz/gruvbox'
-Plug 'itchyny/lightline.vim'
-Plug 'taohexxx/lightline-solarized'
+"Plug 'itchyny/lightline.vim'
+"Plug 'taohexxx/lightline-solarized'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -40,12 +40,12 @@ if !has('gui_running')
 endif
 syntax enable
 set background=dark
-let g:solarized_termtrans = 1
-colorscheme solarized
+"let g:solarized_termtrans = 1
+"colorscheme solarized
 
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ }
+"let g:lightline = {
+"      \ 'colorscheme': 'solarized',
+"      \ }
 
 "Text
 set linebreak
