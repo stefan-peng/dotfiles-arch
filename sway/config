@@ -14,7 +14,7 @@ set $term termite
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 # set $menu dmenu_path | dmenu -fn "Source Code Pro" | xargs swaymsg exec --
-set $menu j4-dmenu-desktop --dmenu='bemenu-run -i --nb "#3f3f3f" --nf "#dcdccc" --fn "pango:Source Code Pro 12"' --term='termite'
+set $menu j4-dmenu-desktop --dmenu='bemenu-run -i --nb "#1d2021" --nf "#d5c4a1" --fn "Source Code Pro 12"' --term='termite'
 
 ### Output configuration
 #
