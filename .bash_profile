@@ -16,7 +16,9 @@ if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
                         export CLUTTER_BACKEND=wayland
                         export BEMENU_BACKEND=wayland
                         export KITTY_ENABLE_WAYLAND=1
-			export MOZ_ENABLE_WAYLAND=1
+                        export MOZ_ENABLE_WAYLAND=1
+                        redshift &
+                        onedrive --monitor &
                         sway
                         ;;
         esac
