@@ -16,6 +16,8 @@ set $term alacritty
 # set $menu dmenu_path | dmenu -fn "Source Code Pro" | xargs swaymsg exec --
 set $menu dmenu_path | wofi --dmenu | xargs swaymsg exec --
 
+set $browser firefox
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -84,6 +86,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym XF86AudioNext exec playerctl next
     bindsym XF86AudioPrev exec playerctl previous
     bindsym $mod+x exec swaylock -f -c 000000
+    bindsym $mod+BackSlash exec $browser
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
