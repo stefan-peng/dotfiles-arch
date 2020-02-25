@@ -10,6 +10,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 "Plug 'altercation/vim-colors-solarized'
+Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips'
@@ -41,7 +42,7 @@ endif
 syntax enable
 set background=dark
 "let g:solarized_termtrans = 1
-colorscheme gruvbox
+colorscheme dim
 
 "let g:lightline = {
 "      \ 'colorscheme': 'solarized',
