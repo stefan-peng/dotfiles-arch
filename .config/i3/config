@@ -2,9 +2,9 @@
 set $mod Mod4
 
 # Set display resolution
-exec_always --no-startup-id xrandr --output eDP1 --mode 2560x1440 --rate 59.95
+exec_always --no-startup-id xrandr --output DP1-8 --mode 2560x1440 --rate 60
 
-font pango:Overpass Regular 8
+font pango:Overpass Regular 12
 
 # Press mod key to be able to resize floating windows
 floating_modifier $mod
@@ -12,11 +12,14 @@ floating_modifier $mod
 # Open new terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-#Close window
+# Open browser
+bindsym $mod+backslash exec chromium
+
+# Close window
 bindsym $mod+BackSpace kill
 
 # Open dmenu 
-bindsym $mod+d exec dmenu_run -fn 'Overpass Mono:size=10' -l 3 -nf '#707880' -sf '#cc6666' -nb '#1d1f21' -sb '#1d1f21'
+bindsym $mod+d exec dmenu_run -fn 'Overpass Mono:size=12' -l 3 -nf '#707880' -sf '#cc6666' -nb '#1d1f21' -sb '#1d1f21'
 
 # Change focus
 bindsym $mod+j focus left
@@ -134,6 +137,8 @@ bar {
 
 new_window pixel 2
 
+hide_edge_borders vertical
+
 # Color variables
 set $unfocused_border #1D1F21
 set $focused_border #CC6666
@@ -147,13 +152,15 @@ client.placeholder      #ffffff #ffffff #ffffff #ffffff   #ffffff
 
 client.background       #ffffff
 
-# Apply .Xresource. As far as I know, only needed here if using startx (don't have a login manager)
+# Apply .Xresource. As far as I know, only needed here if using startx (dont have a login manager)
 exec_always --no-startup-id xrdb ~/.Xresources
 
-# Apply the last colorscheme generated
-exec_always --no-startup-id wal -i $HOME/tmp/wallpaper
+# Apply the last colorscheme generated without changing the background by using -n 
+exec_always --no-startup-id wal -R -n
 
-exec_always --no-startup-id feh --bg-fill $HOME/tmp/wallpaper
+# Apply a background different than the one used by wal
+# If this isn't needed, remove it and remove -n flag from the above command
+exec_always --no-startup-id feh --bg-fill ~/Pictures/deer.jpg
 
 # Execute polybar on launch. Script kills current ones on i3 refresh, otherwise they duplicate
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -162,6 +169,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -170,11 +178,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
-# Lock
+# Screenlock
 bindsym $mod+x exec i3lock
-
-# Browser
-bindsym $mod+backslash exec browser
