@@ -13,8 +13,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
-Plug 'sirver/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'morhetz/gruvbox'
 "Plug 'itchyny/lightline.vim'
 "Plug 'taohexxx/lightline-solarized'
@@ -42,7 +40,7 @@ endif
 syntax enable
 set background=dark
 "let g:solarized_termtrans = 1
-colorscheme dim
+colorscheme gruvbox
 
 "let g:lightline = {
 "      \ 'colorscheme': 'solarized',
