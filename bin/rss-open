@@ -3,5 +3,5 @@
 if printf $1 | grep -q "youtube.com"; then
   firejail mpv "$1"
 else
-  firejail links "$1"
+  firejail firefox "$1"
 fi
