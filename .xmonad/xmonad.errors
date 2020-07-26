@@ -1,22 +1,7 @@
 
-xmonad.hs:232:15: warning: [-Wtabs]
-    Tab character found here, and in 19 further locations.
-    Please use spaces instead.
-    |
-232 | myBrowserClass      = "chromium"
-    |               ^^
-
-xmonad.hs:408:27: warning: [-Wdeprecations]
+xmonad.hs:122:43: warning: [-Wdeprecations]
     In the use of ‘spacing’ (imported from XMonad.Layout.Spacing):
     Deprecated: "Use spacingRaw instead."
     |
-408 |     mySpacing           = spacing gap
-    |                           ^^^^^^^
-
-xmonad.hs:946:31: warning: [-Wdeprecations]
-    In the use of ‘tryMessage_’
-    (imported from XMonad.Actions.MessageFeedback):
-    Deprecated: "Use tryMessageWithNoRefreshToCurrent instead."
-    |
-946 |     tryMsgR x y = sequence_ [(tryMessage_ x y), refresh]
-    |                               ^^^^^^^^^^^
+122 | addSpace     = renamed [CutWordsLeft 2] . spacing gap
+    |                                           ^^^^^^^

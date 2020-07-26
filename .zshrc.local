@@ -3,3 +3,5 @@ export MANPATH=$MANPATH:/opt/texlive/2019/texmf-dist/doc/man
 export INFOPATH=$INFOPATH:/opt/texlive/2019/texmf-dist/doc/info
 export _JAVA_AWT_WM_NONREPARENTING=1
 export XDG_CURRENT_DESKTOP=GNOME
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh

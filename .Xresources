@@ -1,5 +1,4 @@
-*.font: xft: Fira Mono :size=12
-Emacs*font: Fira Mono
+Emacs*font: xos4 Terminus
 
 Xft.dpi:                        192
 Xft.antialias:                  1
@@ -9,6 +8,7 @@ Xft.hinting:                    1
 Xft.lcdfilter:                  lcdlight
 Xft.rgba:                       rgb
 
+URxvt.font: xft:xos4 Terminus:size=12
 URxvt*termName:                 rxvt
 URxvt.depth:                    32
 URxvt*lineSpace:                1

@@ -15,11 +15,11 @@ redshift &
 # dwm only
 slstatus &
 xss-lock slock &
-feh --bg-fill ~/tmp/wallpaper &
+#feh --bg-fill ~/tmp/wallpaper &
 ibus-daemon -drx &
 setxkbmap -model thinkpad -layout us -variant altgr-intl -option ctrl:nocaps
-compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
+#compton -b --config ~/.comptonrc --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
 
-#xbindkeys &
+xbindkeys &
 
-exec dwm
+exec xmonad

@@ -13,7 +13,7 @@ floating_modifier $mod
 bindsym $mod+Return exec termite
 
 # Open browser
-bindsym $mod+backslash exec chromium
+bindsym $mod+backslash exec google-chrome-stable
 
 # Close window
 bindsym $mod+BackSpace kill
@@ -152,15 +152,15 @@ client.placeholder      #ffffff #ffffff #ffffff #ffffff   #ffffff
 
 client.background       #ffffff
 
-# Apply .Xresource. As far as I know, only needed here if using startx (dont have a login manager)
+# Apply .Xresource. As far as I know, only needed here if using startx (don't have a login manager)
 exec_always --no-startup-id xrdb ~/.Xresources
 
 # Apply the last colorscheme generated without changing the background by using -n 
-exec_always --no-startup-id wal -R -n
+exec_always --no-startup-id wal -R
 
 # Apply a background different than the one used by wal
 # If this isn't needed, remove it and remove -n flag from the above command
-exec_always --no-startup-id feh --bg-fill ~/Pictures/deer.jpg
+#exec_always --no-startup-id feh --bg-fill ~/Pictures/deer.jpg
 
 # Execute polybar on launch. Script kills current ones on i3 refresh, otherwise they duplicate
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -178,8 +178,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Brightness controls
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec xbacklight -set -5%
+bindsym XF86MonBrightnessUp exec xbacklight -set +5%
 
 # Screenlock
 bindsym $mod+x exec i3lock
