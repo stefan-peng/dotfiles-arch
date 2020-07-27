@@ -42,9 +42,9 @@ set background=dark
 "let g:solarized_termtrans = 1
 colorscheme dim
 
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ }
+"let g:lightline = {
+"      \ 'colorscheme': 'solarized',
+"      \ }
 
 "Text
 set linebreak

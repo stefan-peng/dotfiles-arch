@@ -178,8 +178,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Brightness controls
-bindsym XF86MonBrightnessDown exec xbacklight -set -5%
-bindsym XF86MonBrightnessUp exec xbacklight -set +5%
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 
 # Screenlock
 bindsym $mod+x exec i3lock

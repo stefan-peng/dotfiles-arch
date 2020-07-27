@@ -1,0 +1,6 @@
+defaults.pcm.rate_converter "speexrate_medium"
+# Use PulseAudio plugin hw
+pcm.!default {
+   type plug
+   slave.pcm hw
+}

@@ -1,7 +1,3 @@
 export PATH=$PATH:$HOME/bin:$HOME/bin/wm:/opt/texlive/2019/bin/x86_64-linux
 export MANPATH=$MANPATH:/opt/texlive/2019/texmf-dist/doc/man
 export INFOPATH=$INFOPATH:/opt/texlive/2019/texmf-dist/doc/info
-export _JAVA_AWT_WM_NONREPARENTING=1
-export XDG_CURRENT_DESKTOP=GNOME
-#(cat ~/.cache/wal/sequences &)
-#source ~/.cache/wal/colors-tty.sh
