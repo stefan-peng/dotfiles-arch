@@ -1,2 +1,5 @@
 xmodmap ~/.Xmodmap &
-exec i3
+xrandr --dpi 210 &
+xrdb -merge ~/.Xresources &
+picom &
+exec xmonad

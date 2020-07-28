@@ -13,7 +13,7 @@ floating_modifier $mod
 bindsym $mod+Return exec termite
 
 # Open browser
-bindsym $mod+backslash exec google-chrome-stable
+bindsym $mod+backslash exec firefox
 
 # Close window
 bindsym $mod+BackSpace kill
@@ -156,11 +156,11 @@ client.background       #ffffff
 exec_always --no-startup-id xrdb ~/.Xresources
 
 # Apply the last colorscheme generated without changing the background by using -n 
-exec_always --no-startup-id wal -R
+# exec_always --no-startup-id wal -R -n
 
 # Apply a background different than the one used by wal
 # If this isn't needed, remove it and remove -n flag from the above command
-#exec_always --no-startup-id feh --bg-fill ~/Pictures/deer.jpg
+exec_always --no-startup-id feh --bg-fill ~/OneDrive/Pictures/Wallpapers/deer.jpg
 
 # Execute polybar on launch. Script kills current ones on i3 refresh, otherwise they duplicate
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

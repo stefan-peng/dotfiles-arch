@@ -61,9 +61,11 @@ myScreenshot = "xfce4-screenshooter"
 
 -- The command to use as a launcher, to launch commands that don't have
 -- preset keybindings.
-myLauncher = "rofi -show"
+myLauncher = "dmenu_run -fn Hermit:size=12:antialias=true"
+-- "rofi --show"
 
-
+-- The command to use as a browser
+myBrowser = "firefox"
 
 ------------------------------------------------------------------------
 -- Workspaces
@@ -256,7 +258,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   --
 
   -- Start a terminal.  Terminal to start is specified by myTerminal variable.
-  [ ((modMask .|. shiftMask, xK_Return),
+  [ ((modMask, xK_Return),
      spawn $ XMonad.terminal conf)
 
   -- Lock the screen using command specified by myScreensaver.
@@ -266,7 +268,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Spawn the launcher using command specified by myLauncher.
   -- Use this to launch programs without a key binding.
   , ((modMask, xK_p),
-     spawn $ myLauncher ++ " drun")
+     spawn $ myLauncher)
+
+  -- Start a browser. Browser to start is specified by myBrowser variable.
+  , ((modMask, xK_backslash),
+     spawn $ myBrowser)
 
   -- Take a selective screenshot using the command specified by mySelectScreenshot.
   , ((modMask .|. shiftMask, xK_p),
@@ -312,7 +318,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   --
 
   -- Close focused window.
-  , ((modMask .|. shiftMask, xK_c),
+  , ((modMask, xK_BackSpace),
      kill)
 
   -- Cycle through the available layout algorithms.
@@ -340,7 +346,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      windows W.focusMaster  )
 
   -- Swap the focused window and the master window.
-  , ((modMask, xK_Return),
+  , ((modMask .|. shiftMask, xK_Return),
      windows W.swapMaster)
 
   -- Swap the focused window with the next window.

@@ -1,4 +1,4 @@
-Emacs*font: xos4 Terminus
+Emacs*font:                     xos4 Terminus
 
 Xft.dpi:                        192
 Xft.antialias:                  1
@@ -8,7 +8,7 @@ Xft.hinting:                    1
 Xft.lcdfilter:                  lcdlight
 Xft.rgba:                       rgb
 
-URxvt.font: xft:xos4 Terminus:size=12
+URxvt.font:                     xft:xos4 Terminus:size=12
 URxvt*termName:                 rxvt
 URxvt.depth:                    32
 URxvt*lineSpace:                1
@@ -19,9 +19,9 @@ URxvt*geometry:                 65x17
 URxvt.scrollBar:                false
 URxvt*loginShell:               true
 URxvt.internalBorder:           25
-URxvt.perl-ext:	 		default,matcher
+URxvt.perl-ext:           	 		default,matcher
 URxvt.url-launcher:             w3m
-URxvt.matcher.button: 		1
+URxvt.matcher.button: 	      	1
 
 ! -----------------------------------------------------------------------------
 ! File: gruvbox-dark.xresources

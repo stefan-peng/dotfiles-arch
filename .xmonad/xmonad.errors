@@ -1,7 +1,0 @@
-
-xmonad.hs:122:43: warning: [-Wdeprecations]
-    In the use of ‘spacing’ (imported from XMonad.Layout.Spacing):
-    Deprecated: "Use spacingRaw instead."
-    |
-122 | addSpace     = renamed [CutWordsLeft 2] . spacing gap
-    |                                           ^^^^^^^
