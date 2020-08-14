@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if printf "$1" | grep -q "youtube.com" || printf "$1" | grep -q "youtu.be"; then
+if printf "$1" | grep -q "youtube.com\|youtu.be\|mp4\|mkv\|webm"; then
 	echo "$(date)	$1" >> $HOME/OneDrive/videos.txt
 	firejail mpv "$1"
 else
 	echo "$(date)	$1" >> $HOME/OneDrive/articles.txt
-	firejail links "$1"
+	firejail firefox "$1"
 fi
