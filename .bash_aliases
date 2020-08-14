@@ -1,2 +1,2 @@
-alias n='newsboat'
-alias o='$HOME/.bin/rss-open'
+alias n='newsboat -r'
+alias o='rss-open'
