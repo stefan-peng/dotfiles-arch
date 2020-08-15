@@ -1,0 +1,5 @@
+#!/bin/bash
+
+FILE=$HOME/readlater.txt
+
+[ -s $FILE ] && $HOME/bin/rss-open $(head -n 1 $FILE) && sed -i 1d $FILE

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+FILE=$HOME/readlater.txt
+LINK=$(xclip -selection c -o)
+
+echo $LINK >> $FILE
