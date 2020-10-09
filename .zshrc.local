@@ -5,3 +5,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export XDG_CURRENT_DESKTOP=GNOME
 #(cat ~/.cache/wal/sequences &)
 #source ~/.cache/wal/colors-tty.sh
+alias n='newsboat -r'
+alias o='rss-open'
+alias ydl='youtube-dl -f "bestvideo[height <= 1440]+bestaudio"'
+alias y='newsboat -r -c $HOME/.newsboat/youtube-cache.db -u $HOME/.newsboat/youtube-urls'
+alias wtr='curl v2.wttr.in'

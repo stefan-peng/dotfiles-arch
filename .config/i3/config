@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $mod2 Mod2
 
 workspace_layout stacked
 
@@ -33,7 +34,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
+
+# wallpaper
+exec --no-startup-id feh --bg-scale ~/tmp/StarlitValley.png
 
 # picom for screen tearing
 exec --no-startup-id picom -b
@@ -49,11 +53,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 
+# Lock session
+bindsym $mod+x exec loginctl lock-session
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec exec urxvt
+bindsym $mod+Return exec exec termite
 bindsym $mod+Shift+Return exec exec urxvt -fn 'xft:Bitstream Vera Sans Mono:size=16'
 
 # kill focused window
@@ -99,6 +105,8 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+bindsym $mod+$mod2+f focus parent; fullscreen; focus child
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -115,6 +123,21 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+
+# ----------------------------- Floating Windows -------------------------------
+# While dialogs should open in floating mode by default, many still open in
+# tiling mode.  To change this behaviour, check the dialog's WM_WINDOW_ROLE
+# or WM_CLASS with the Xorg utility xprop and add the correct rules here.
+for_window [window_role="pop-up"] floating enable          # pop-up window
+for_window [window_role="task_dialog"] floating enable     # dialog window
+for_window [title="Preferences$"] floating enable          # preferences window
+
+# Scratchpad
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
