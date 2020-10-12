@@ -12,7 +12,7 @@
 set $mod Mod4
 set $mod2 Mod2
 
-workspace_layout stacked
+workspace_layout stacking
 
 # prompt for new workspace name
 bindsym $mod+g exec i3-msg \"rename workspace to \\\"$(rofi -dmenu -p rename)\\\"\"

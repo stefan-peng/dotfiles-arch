@@ -10,3 +10,13 @@ alias o='rss-open'
 alias ydl='youtube-dl -f "bestvideo[height <= 1440]+bestaudio"'
 alias y='newsboat -r -c $HOME/.newsboat/youtube-cache.db -u $HOME/.newsboat/youtube-urls'
 alias wtr='curl v2.wttr.in'
+
+export QT_QPA_PLATFORM=wayland-egl
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1 # Qt adds titlebars under Wayland, this gets rid of them
+#export SDL_VIDEODRIVER=wayland # causes issues with lots of games
+export CLUTTER_BACKEND=wayland
+export BEMENU_BACKEND=wayland
+export KITTY_ENABLE_WAYLAND=1
+export MOZ_ENABLE_WAYLAND=1
+
+(cat ~/.cache/wal/sequences &)

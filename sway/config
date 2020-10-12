@@ -1,4 +1,5 @@
 # Read `man 5 sway` for a complete reference.
+include "$HOME/.cache/wal/colors-sway"
 
 ### Variables
 #
@@ -10,11 +11,13 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term kitty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 # set $menu dmenu_path | dmenu -fn "Source Code Pro" | xargs swaymsg exec --
-set $menu dmenu_path | wofi --dmenu | xargs swaymsg exec --
+# set $menu dmenu_path | wofi --dmenu | xargs swaymsg exec --
+# set $menu rofi -modi drun -show drun
+set $menu dmenu-wl_run -nb "$background" -nf "$foreground" -sb "$color2" -sf "$color7" -i -l 5
 
 set $browser firefox
 
@@ -28,7 +31,8 @@ set $browser firefox
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-output eDP-1 scale 2
+output HDMI-A-2 pos 0 0 scale 1
+output eDP-1 pos 0 1080 scale 2
 
 ### Idle configuration
 #
@@ -87,6 +91,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym XF86AudioPrev exec playerctl previous
     bindsym $mod+x exec swaylock -f -c 000000
     bindsym $mod+BackSlash exec $browser
+    bindsym $mod+Shift+w exec wal -i ~/tmp/
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -216,13 +221,23 @@ bindsym $mod+r mode "resize"
 #
 # Appearance:
 # 
-font "pango:Source Code Pro 12"
+font "pango:JetBrainsMono 12"
 default_border pixel
 
 #include $HOME/.config/sway/colorscheme
-include "$HOME/.cache/wal/colors-sway"
+
+gaps outer 10
+gaps inner 20
+
 output * background $wallpaper fill
-client.focused $color0 $background $foreground $color7 $background
+
+# class                 border    backgr.   text      indicator child_border
+client.focused          $color6   $color6   $color0   $color5   $color8
+client.unfocused        $color3   $color0   $color8   $color5   $color8
+client.focused_inactive $color7   $color7   $color0   $color5   $color8
+client.urgent           $color1   $color1   $color0   $color5   $color8
+
+client.background       $bg
 
 #
 # Status Bar:
@@ -252,7 +267,9 @@ bar {
     colors {
         statusline $foreground
         background $background
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        active_workspace   $background $foreground $background
+        focused_workspace  $background $color6 $color0
+        inactive_workspace $background $background $color8
     }
 }
 
