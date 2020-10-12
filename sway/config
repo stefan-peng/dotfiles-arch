@@ -37,7 +37,7 @@ set $hp HDMI-A-2
 set $laptop eDP-1
 
 output $hp pos 0 0 scale 1
-output $laptop pos 0 1080 scale 2
+output $laptop pos 320 1080 scale 2
 
 # Clamshell mode
 bindswitch --reload --locked lid:on output $laptop disable
