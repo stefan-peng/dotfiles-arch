@@ -17,11 +17,11 @@ set $term kitty
 # set $menu dmenu_path | dmenu -fn "Source Code Pro" | xargs swaymsg exec --
 # set $menu dmenu_path | wofi --dmenu | xargs swaymsg exec --
 # set $menu rofi -modi drun -show drun
-set $menu dmenu-wl_run -nb "$background" -nf "$foreground" -sb "$color2" -sf "$color7" -i -l 5
+set $menu dmenu-wl_run -nb "$background" -nf "$foreground" -sb "$color2" -sf "$color7" -i -l 5 | xargs swaymsg exec --
 
 set $browser firefox
 
-workspace_layout stacking
+workspace_layout tabbed
 
 ### Output configuration
 #

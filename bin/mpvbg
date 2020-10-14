@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mpv --fs -shuffle -loop 0 ~/Videos/*mov

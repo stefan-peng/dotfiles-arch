@@ -14,8 +14,8 @@ Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
-Plug 'itchyny/lightline.vim'
-Plug 'taohexxx/lightline-solarized'
+"Plug 'itchyny/lightline.vim'
+"Plug 'taohexxx/lightline-solarized'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -49,8 +49,8 @@ colorscheme dim
 "Text
 set linebreak
 set nojoinspaces
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set shiftround
 set expandtab
 
@@ -61,6 +61,7 @@ let g:tex_conceal = ""
 let g:vim_markdown_math = 1
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_new_list_item_indent = 4
 
 autocmd BufNewFile,BufFilePre,BufRead *.md hi link mkdLineBreak Underlined
 
