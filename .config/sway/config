@@ -1,8 +1,5 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
+include "$HOME/.cache/wal/colors-sway"
 
 ### Variables
 #
@@ -14,79 +11,87 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
-set $browser firefox
+set $term kitty
 # Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-#set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# Note: it's recommended that you pass the final command to sway
+# set $menu dmenu_path | dmenu -fn "Source Code Pro" | xargs swaymsg exec --
+# set $menu dmenu_path | wofi --dmenu | xargs swaymsg exec --
+# set $menu rofi -modi drun -show drun
+# set $menu dmenu-wl_run -nb "$background" -nf "$foreground" -sb "$color2" -sf "$color7" -i -l 5 | xargs swaymsg exec --
+set $menu wofi
 
-## Base16 Gruvbox dark, soft
-# Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
-#
-# You can use these variables anywhere in the i3 configuration file.
+set $browser firefox
 
-set $base00 #32302f
-set $base01 #3c3836
-set $base02 #504945
-set $base03 #665c54
-set $base04 #bdae93
-set $base05 #d5c4a1
-set $base06 #ebdbb2
-set $base07 #fbf1c7
-set $base08 #fb4934
-set $base09 #fe8019
-set $base0A #fabd2f
-set $base0B #b8bb26
-set $base0C #8ec07c
-set $base0D #83a598
-set $base0E #d3869b
-set $base0F #d65d0e
-
-set $menu j4-dmenu-desktop --dmenu='bemenu -i --nb "$base00" --nf "$base05" --fn "Iosevka 12"' --term='alacritty' | xargs swaymsg exec --
-
-font Iosevka, FontAwesome
+workspace_layout tabbed
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * background ~/tmp/wallpaper fill
 #
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+set $hp HDMI-A-2
+set $laptop eDP-1
+
+output $hp pos 0 0 scale 1
+output $laptop pos 320 1080 scale 2
+
+seat * hide_cursor 10000
+
+output * {
+    bg "#222222" solid_color
+}
+
+
+# Clamshell mode
+#bindswitch --reload --locked lid:on output $laptop disable
+#bindswitch --reload --locked lid:off output $laptop enable
+
+# wluma
+bindswitch --locked lid:off output $screen_laptop dpms on, exec systemctl --user start wluma
+bindswitch --locked lid:on  exec systemctl --user stop wluma, output $screen_laptop dpms off
 
 ### Idle configuration
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
+exec swayidle -w \
+      timeout 300 'swaylock -f -c 000000' \
+      timeout 600 'swaymsg "output * dpms off"' \
+           resume 'swaymsg "output * dpms on"' \
+      before-sleep 'swaylock -f -c 000000'
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+
+# gammastep
+exec gammastep &
 
 ### Input configuration
 #
 # Example configuration:
 #
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+# Disable cursor jumping
+mouse_warping none
+focus_follows_mouse yes
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-input "type:keyboard" {
-    xkb_layout us
-    xkb_options ctrl:nocaps
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+	xkb_options ctrl:nocaps
 }
 
 ### Key bindings
@@ -114,6 +119,7 @@ input "type:keyboard" {
     bindsym XF86AudioPrev exec playerctl previous
     bindsym $mod+x exec swaylock -f -c 000000
     bindsym $mod+BackSlash exec $browser
+    bindsym $mod+Shift+w exec wal -i ~/tmp/
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -124,6 +130,10 @@ input "type:keyboard" {
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
+
+    # Restart sway inplace (preserves your layout/session, can be used to upgrade sway)
+    bindsym $mod+Shift+r restart
+
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
@@ -154,30 +164,43 @@ input "type:keyboard" {
 #
 # Workspaces:
 #
+    set $workspace1 workspace number 1
+    set $workspace2 workspace number 2
+    set $workspace3 workspace number 3
+    set $workspace4 workspace number 4
+    set $workspace5 workspace number 5
+    set $workspace6 workspace number 6
+    set $workspace7 workspace number 7
+    set $workspace8 workspace number 8
+    set $workspace9 workspace number 9
+    set $workspace0 workspace number 10
+
     # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
+    bindsym $mod+1 $workspace1
+    bindsym $mod+2 $workspace2
+    bindsym $mod+3 $workspace3
+    bindsym $mod+4 $workspace4
+    bindsym $mod+5 $workspace5
+    bindsym $mod+6 $workspace6
+    bindsym $mod+7 $workspace7
+    bindsym $mod+8 $workspace8
+    bindsym $mod+9 $workspace9
+    bindsym $mod+0 $workspace10
+    
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+1 move container to $workspace1
+    bindsym $mod+Shift+2 move container to $workspace2
+    bindsym $mod+Shift+3 move container to $workspace3
+    bindsym $mod+Shift+4 move container to $workspace4
+    bindsym $mod+Shift+5 move container to $workspace5
+    bindsym $mod+Shift+6 move container to $workspace6
+    bindsym $mod+Shift+7 move container to $workspace7
+    bindsym $mod+Shift+8 move container to $workspace8
+    bindsym $mod+Shift+9 move container to $workspace9
+    bindsym $mod+Shift+0 move container to $workspace10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+    
 #
 # Layout stuff:
 #
@@ -198,9 +221,7 @@ input "type:keyboard" {
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
 
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
-
+    # Swap focus between the tiling area and the floating area bindsym $mod+space focus mode_toggle
     # Move focus to the parent container
     bindsym $mod+a focus parent
 #
@@ -240,33 +261,77 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+#
+# Appearance:
+# 
+font "pango:JetBrainsMono 10"
+default_border pixel
+
+gaps outer 5
+gaps inner 10
+
+# output * background $wallpaper fill
+
+# Specific window configuration
+for_window    [app_id=".*"]                              sticky enable
+for_window    [window_role="pop-up"]                     floating enable
+for_window    [app_id="udiskie"]                         floating enable
+for_window    [class="ksnip"]                            fullscreen enable
+for_window    [app_id="firefox"]                         move container to $workspace2, title_format "Firefox"
+for_window    [class="Wire"]                             move container to $workspace3
+for_window    [app_id="neomutt"]                         move container to $workspace4, title_format "NeoMutt"
+for_window    [title="Firefox - Sharing Indicator"]      floating enable
+for_window    [app_id="dmenu.*"]                         floating enable, resize set width 60ppt height 80ppt
+for_window    [app_id="dmenu-browser"]                   resize set height 20ppt
+for_window    [app_id="dmenu-calc"]                      resize set width 40ppt height 30ppt
+
+include ~/.config/sway/colorscheme
+
+set $color_normal_white  #a89984
+set $color_bright_white  #ebdbb2
+set $color_normal_gray   #222222
+set $color_bright_gray   #3c3836
+set $color_bright_yellow #d79921
+set $color_normal_black  #282828
+set $color_unused        #ff0000
+
+# class                 border    backgr.   text      indicator child_border
+client.focused            $color_bright_gray     $color_bright_gray     $color_bright_white    $color_bright_gray   $color_normal_black
+client.focused_inactive   $color_bright_gray     $color_bright_gray     $color_bright_white    $color_bright_gray   $color_normal_black
+client.unfocused          $color_normal_gray     $color_normal_gray     $color_normal_white    $color_normal_gray   $color_normal_black
+client.urgent             $color_bright_yellow   $color_bright_yellow   $color_normal_black    $color_unused        $color_unused
+client.placeholder        $color_unused          $color_unused          $color_unused          $color_unused        $color_unused
+
+
+client.background       $bg
+
+#
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    status_command i3status -c $HOME/.config/sway/i3status.conf
-
-    colors {
-        background $base00
-        separator  $base01
-        statusline $base04
-
-        # State             Border  BG      Text
-        focused_workspace   $base05 $base0D $base00
-        active_workspace    $base05 $base03 $base00
-        inactive_workspace  $base03 $base01 $base05
-        urgent_workspace    $base08 $base08 $base00
-        binding_mode        $base00 $base0A $base00
-    }
-}
-
-# Basic color configuration using the Base16 variables for windows and borders.
-# Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base05 $base0D $base00 $base0D $base0C
-client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
+#bar {
+#    position top
+#
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    # The default just shows the current date and time.
+#    #status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+#    status_command while ~/.config/sway/status.sh; do sleep 1; done
+#
+#    font "pango:JetBrainsMono 10"
+#    colors {
+#        background $base00
+#        separator  $base01
+#        statusline $base04
+#
+#        # State             Border  BG      Text
+#        focused_workspace   $base05 $base0D $base00
+#        active_workspace    $base05 $base03 $base00
+#        inactive_workspace  $base03 $base01 $base05
+#        urgent_workspace    $base08 $base08 $base00
+#        binding_mode        $base00 $base0A $base00
+#    }  
+#}
 
 include /etc/sway/config.d/*
+exec sway-autoname-workspaces -d &
+exec waybar
