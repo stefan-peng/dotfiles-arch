@@ -19,12 +19,14 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
 
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'plasticboy/vim-markdown'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ap/vim-css-color'
+Plug 'morhetz/gruvbox'
 
 Plug 'tpope/vim-surround'
 Plug 'rbgrouleff/bclose.vim'
@@ -56,7 +58,7 @@ nnoremap c "_c
 set nocompatible
 filetype plugin on
 set bg=dark
-colorscheme nord
+colorscheme gruvbox
 syntax on
 set encoding=utf-8
 set number relativenumber
@@ -185,7 +187,7 @@ let g:NERDTreeDirArrowCollapsible = ''
 
 " let g:airline_powerline_fonts = 1
 let g:lightline = {
-			\ 'colorscheme': 'nord'
+			\ 'colorscheme': 'gruvbox'
 			\}
 
 set noshowmode
