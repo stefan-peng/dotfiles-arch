@@ -1,9 +1,9 @@
 # Read `man 5 sway` for a complete reference.
-include "$HOME/.cache/wal/colors-sway"
+include ./colorscheme
 
 ### Variables
 #
-# Logo key. Use Mod1 for Alt.
+# Logo key. Use Mod1 for Alt, Mod4 for Win.
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
@@ -15,10 +15,10 @@ set $term kitty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 # set $menu dmenu_path | dmenu -fn "Source Code Pro" | xargs swaymsg exec --
-# set $menu dmenu_path | wofi --dmenu | xargs swaymsg exec --
+set $menu dmenu_path | wofi --dmenu | xargs swaymsg exec --
 # set $menu rofi -modi drun -show drun
-# set $menu dmenu-wl_run -nb "$background" -nf "$foreground" -sb "$color2" -sf "$color7" -i -l 5 | xargs swaymsg exec --
-set $menu wofi
+# set $menu dmenu_run -nb "$background" -nf "$foreground" -sb "$color2" -sf "$color7" -i -l 5 | xargs swaymsg exec --
+# set $menu wofi
 
 set $browser firefox
 
@@ -36,9 +36,11 @@ workspace_layout tabbed
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 set $hp HDMI-A-2
 set $laptop eDP-1
+set $dell DP-1
 
-output $hp pos 0 0 scale 1
-output $laptop pos 320 1080 scale 2
+output $dell pos 0 0 scale 1
+output $hp pos 1920 0 scale 1
+output $laptop pos 2880 1080 scale 2
 
 seat * hide_cursor 10000
 
@@ -48,12 +50,12 @@ output * {
 
 
 # Clamshell mode
-#bindswitch --reload --locked lid:on output $laptop disable
-#bindswitch --reload --locked lid:off output $laptop enable
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
 # wluma
-bindswitch --locked lid:off output $screen_laptop dpms on, exec systemctl --user start wluma
-bindswitch --locked lid:on  exec systemctl --user stop wluma, output $screen_laptop dpms off
+#bindswitch --locked lid:off output $screen_laptop dpms on, exec systemctl --user start wluma
+#bindswitch --locked lid:on  exec systemctl --user stop wluma, output $screen_laptop dpms off
 
 ### Idle configuration
 #
@@ -91,7 +93,15 @@ focus_follows_mouse yes
 # Read `man 5 sway-input` for more information about this section.
 
 input "1:1:AT_Translated_Set_2_keyboard" {
-	xkb_options ctrl:nocaps
+        xkb_options ctrl:nocaps
+}
+
+input "1452:544:Apple,_Inc_Apple_Keyboard" {
+        xkb_options ctrl:nocaps
+}
+
+input "1226:64:LiteOn_HP_USB_Multimedia_Keyboard" {
+        xkb_options ctrl:nocaps
 }
 
 ### Key bindings
@@ -186,7 +196,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+8 $workspace8
     bindsym $mod+9 $workspace9
     bindsym $mod+0 $workspace10
-    
+
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to $workspace1
     bindsym $mod+Shift+2 move container to $workspace2
@@ -200,7 +210,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+0 move container to $workspace10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-    
+
 #
 # Layout stuff:
 #
@@ -263,8 +273,8 @@ bindsym $mod+r mode "resize"
 
 #
 # Appearance:
-# 
-font "pango:JetBrainsMono 10"
+#
+font "pango:Victor Mono 16"
 default_border pixel
 
 gaps outer 5
@@ -295,13 +305,12 @@ set $color_bright_yellow #d79921
 set $color_normal_black  #282828
 set $color_unused        #ff0000
 
-# class                 border    backgr.   text      indicator child_border
-client.focused            $color_bright_gray     $color_bright_gray     $color_bright_white    $color_bright_gray   $color_normal_black
+# class                   border                 backgr.                text                   indicator            child_border
+client.focused            $color_bright_yellow   $color_bright_gray     $color_bright_white    $color_bright_gray   $color_bright_yellow
 client.focused_inactive   $color_bright_gray     $color_bright_gray     $color_bright_white    $color_bright_gray   $color_normal_black
 client.unfocused          $color_normal_gray     $color_normal_gray     $color_normal_white    $color_normal_gray   $color_normal_black
 client.urgent             $color_bright_yellow   $color_bright_yellow   $color_normal_black    $color_unused        $color_unused
 client.placeholder        $color_unused          $color_unused          $color_unused          $color_unused        $color_unused
-
 
 client.background       $bg
 
@@ -309,29 +318,28 @@ client.background       $bg
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-#bar {
-#    position top
-#
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    #status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-#    status_command while ~/.config/sway/status.sh; do sleep 1; done
-#
-#    font "pango:JetBrainsMono 10"
-#    colors {
-#        background $base00
-#        separator  $base01
-#        statusline $base04
-#
-#        # State             Border  BG      Text
-#        focused_workspace   $base05 $base0D $base00
-#        active_workspace    $base05 $base03 $base00
-#        inactive_workspace  $base03 $base01 $base05
-#        urgent_workspace    $base08 $base08 $base00
-#        binding_mode        $base00 $base0A $base00
-#    }  
-#}
+bar {
+    position top
 
-include /etc/sway/config.d/*
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    #status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+    status_command while ~/.config/sway/status.sh; do sleep 1; done
+
+    font "pango:Victor Mono 16"
+    colors {
+        background $base00
+        separator  $base01
+        statusline $base04
+
+        # State             Border  BG      Text
+        focused_workspace   $base05 $base0D $base00
+        active_workspace    $base05 $base03 $base00
+        inactive_workspace  $base03 $base01 $base05
+        urgent_workspace    $base08 $base08 $base00
+        binding_mode        $base00 $base0A $base00
+    }
+}
+
 exec sway-autoname-workspaces -d &
-exec waybar &
+include /etc/sway/config.d/*
