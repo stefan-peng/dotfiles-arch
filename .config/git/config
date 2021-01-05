@@ -1,0 +1,25 @@
+[user]
+	name = Stefan Peng
+	email = stefanpeng9@gmail.com
+[push]
+	default = simple
+[core]
+	editor = vim
+	autocrlf = input
+[instaweb]
+	browser = qutebrowser
+[alias]
+	fuckit = reset --hard
+[include]
+	path = ~/.config/git/secret
+[gitreview]
+	username = stefanpeng9
+[pull]
+	rebase = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = master
