@@ -1,0 +1,15 @@
+bar {
+        status_command custom_statusbar
+        position top
+        pango_markup disabled
+        font pango:IPAGothic 11, DejaVu Sans Mono 10
+        strip_workspace_numbers yes
+        colors {
+            background #1F1F1F
+            inactive_workspace $gray $gray #888888
+            active_workspace $gray $gray #ffffff
+            urgent_workspace $red $red #ffffff
+            focused_workspace $blue $blue #ffffff
+            urgent_workspace $red $red #ffffff
+        }
+}

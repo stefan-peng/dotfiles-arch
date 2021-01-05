@@ -15,10 +15,11 @@ set $term kitty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 # set $menu dmenu_path | dmenu -fn "Source Code Pro" | xargs swaymsg exec --
-set $menu dmenu_path | wofi --dmenu | xargs swaymsg exec --
+# set $menu dmenu_path | wofi --dmenu | xargs swaymsg exec --
 # set $menu rofi -modi drun -show drun
 # set $menu dmenu_run -nb "$background" -nf "$foreground" -sb "$color2" -sf "$color7" -i -l 5 | xargs swaymsg exec --
 # set $menu wofi
+set $menu bemenu-run | xargs swaymsg exec --
 
 set $browser firefox
 
@@ -274,7 +275,7 @@ bindsym $mod+r mode "resize"
 #
 # Appearance:
 #
-font "pango:Victor Mono 16"
+font "pango:Dejavu Sans Mono:12"
 default_border pixel
 
 gaps outer 5
@@ -324,9 +325,9 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     #status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-    status_command while ~/.config/sway/status.sh; do sleep 1; done
+    status_command custom_statusbar
 
-    font "pango:Victor Mono 16"
+    font "pango:Dejavu Sans Mono 12"
     colors {
         background $base00
         separator  $base01

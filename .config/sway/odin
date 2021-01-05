@@ -1,0 +1,12 @@
+output * bg ~/pictures/wallpaper.jpg fill
+
+include ~/.config/sway/bar
+
+for_window [title=".*"] title_format %title (class=%class app_id=%app_id instance=%instance shell=%shell)
+
+input * {
+    xkb_options ctrl:nocaps
+}
+
+bindsym --locked XF86AudioRaiseVolume exec amixer set Master 2%+
+bindsym --locked XF86AudioLowerVolume exec amixer set Master 2%-
