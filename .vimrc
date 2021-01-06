@@ -19,6 +19,7 @@ Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 "Basic
@@ -64,6 +65,10 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_new_list_item_indent = 4
 
 autocmd BufNewFile,BufFilePre,BufRead *.md hi link mkdLineBreak Underlined
+
+"Vimwiki
+let g:vimwiki_list = [{'path': '~/Vault/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 "Latex
 let g:tex_flavor='latex'
