@@ -19,30 +19,11 @@ set $term kitty
 # set $menu rofi -modi drun -show drun
 # set $menu dmenu_run -nb "$background" -nf "$foreground" -sb "$color2" -sf "$color7" -i -l 5 | xargs swaymsg exec --
 # set $menu wofi
-set $menu bemenu-run | xargs swaymsg exec --
+set $menu bemenu-run --no-overlap | xargs swaymsg exec --
 
-set $browser firefox
+set $browser qutebrowser
 
 workspace_layout tabbed
-
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * background ~/tmp/wallpaper fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-set $hp HDMI-A-2
-set $laptop eDP-1
-set $dell DP-1
-
-output $dell pos 0 0 scale 1
-output $hp pos 1920 0 scale 1
-output $laptop pos 2880 1080 scale 2
-
 seat * hide_cursor 10000
 
 output * {
