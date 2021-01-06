@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if printf "$1" | grep -q "youtube.com\|youtu.be\|mp4\|mkv\|webm"; then
-	echo "$(date)	$1" >> $HOME/OneDrive/videos.txt
-	mpv "$1"
+    echo "$(date)	$1" >> $HOME/Documents/videos.txt
+    mpv "$1"
 else
-	echo "$(date)	$1" >> $HOME/OneDrive/articles.txt
-  firefox "$1"
+    echo "$(date)	$1" >> $HOME/Documents/articles.txt
+    qutebrowser "$1"
 fi
