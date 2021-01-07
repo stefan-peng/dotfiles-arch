@@ -7,8 +7,8 @@ export LANG=en_US.UTF-8
 export PYTHONPATH=~/lib/python3:~/sources/core.sr.ht/:~/sources/scm.sr.ht
 export GOPATH=~/.local/share/go
 export GOPROXY=direct
-export GDK_BACKEND=wayland
-export MOZ_ENABLE_WAYLAND=1
+#export GDK_BACKEND=wayland
+#export MOZ_ENABLE_WAYLAND=1
 
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
