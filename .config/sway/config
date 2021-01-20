@@ -5,22 +5,12 @@ include ./colorscheme
 #
 # Logo key. Use Mod1 for Alt, Mod4 for Win.
 set $mod Mod4
-# Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
 set $term kitty
-# Your preferred application launcher
-# Note: it's recommended that you pass the final command to sway
-# set $menu dmenu_path | dmenu -fn "Source Code Pro" | xargs swaymsg exec --
-# set $menu dmenu_path | wofi --dmenu | xargs swaymsg exec --
-# set $menu rofi -modi drun -show drun
-# set $menu dmenu_run -nb "$background" -nf "$foreground" -sb "$color2" -sf "$color7" -i -l 5 | xargs swaymsg exec --
-# set $menu wofi
 set $menu bemenu-run --no-overlap | xargs swaymsg exec --
-
 set $browser qutebrowser
 
 workspace_layout tabbed
@@ -35,13 +25,7 @@ output * {
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
-# wluma
-#bindswitch --locked lid:off output $screen_laptop dpms on, exec systemctl --user start wluma
-#bindswitch --locked lid:on  exec systemctl --user stop wluma, output $screen_laptop dpms off
-
 ### Idle configuration
-#
-# Example configuration:
 #
 exec swayidle -w \
       timeout 300 'swaylock -f -c 000000' \
@@ -296,33 +280,7 @@ client.placeholder        $color_unused          $color_unused          $color_u
 
 client.background       $bg
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-#bar {
-#    position top
-#
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    #status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-#    status_command custom_statusbar
-#
-#    font "pango:Spleen 16x32"
-#    colors {
-#        background $base00
-#        separator  $base01
-#        statusline $base04
-#
-#        # State             Border  BG      Text
-#        focused_workspace   $base05 $base0D $base00
-#        active_workspace    $base05 $base03 $base00
-#        inactive_workspace  $base03 $base01 $base05
-#        urgent_workspace    $base08 $base08 $base00
-#        binding_mode        $base00 $base0A $base00
-#    }
-#}
-
 exec sway-autoname-workspaces -d &
 exec waybar &
+include ~/.config/sway/odin
 include /etc/sway/config.d/*

@@ -1,3 +1,10 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 PS1='$(prompt) \$ '
 
 export ENV=~/.env
@@ -8,7 +15,7 @@ export PYTHONPATH=~/lib/python3:~/sources/core.sr.ht/:~/sources/scm.sr.ht
 export GOPATH=~/.local/share/go
 export GOPROXY=direct
 #export GDK_BACKEND=wayland
-#export MOZ_ENABLE_WAYLAND=1
+export MOZ_ENABLE_WAYLAND=1
 
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
@@ -42,5 +49,4 @@ alias ip='ip -color=auto'
 alias n='newsboat -u $HOME/.newsboat/urls -c $HOME/.newsboat/cache.db'
 alias y='newsboat -u $HOME/.newsboat/youtube-urls -c $HOME/.newsboat/youtube-cache.db'
 alias glances='glances --disable-bg'
-
-[ -e .config/$HOSTNAME.profile ] && . .config/$HOSTNAME.profile
+alias t='todo.sh'
