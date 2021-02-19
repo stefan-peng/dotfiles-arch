@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'junegunn/goyo.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'jeffkreeftmeijer/vim-dim'
