@@ -1,5 +1,5 @@
 # Read `man 5 sway` for a complete reference.
-include ./colorscheme
+include ~/.cache/wal/colors-sway
 
 ### Variables
 #
@@ -10,16 +10,11 @@ set $down j
 set $up k
 set $right l
 set $term kitty
-set $menu bemenu-run --no-overlap | xargs swaymsg exec --
-set $browser qutebrowser
+#set $menu bemenu-run --no-overlap | xargs swaymsg exec --
+set $menu rofi -show run | xargs swaymsg exec --
+set $browser firefox
 
-workspace_layout tabbed
 seat * hide_cursor 10000
-
-output * {
-    bg "#222222" solid_color
-}
-
 
 # Clamshell mode
 bindswitch --reload --locked lid:on output $laptop disable
@@ -36,9 +31,6 @@ exec swayidle -w \
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-
-# gammastep
-exec gammastep &
 
 ### Input configuration
 #
@@ -58,15 +50,7 @@ focus_follows_mouse yes
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-input "1:1:AT_Translated_Set_2_keyboard" {
-        xkb_options ctrl:nocaps
-}
-
-input "1452:544:Apple,_Inc_Apple_Keyboard" {
-        xkb_options ctrl:nocaps
-}
-
-input "1226:64:LiteOn_HP_USB_Multimedia_Keyboard" {
+input "type:keyboard" {
         xkb_options ctrl:nocaps
 }
 
@@ -240,13 +224,13 @@ bindsym $mod+r mode "resize"
 #
 # Appearance:
 #
-font "pango:Spleen 16x32"
+font "pango:IBM Plex Mono"
 default_border pixel
 
 gaps outer 5
 gaps inner 10
 
-# output * background $wallpaper fill
+output * background $wallpaper fill
 
 # Specific window configuration
 for_window    [app_id=".*"]                              sticky enable
@@ -261,26 +245,12 @@ for_window    [app_id="dmenu.*"]                         floating enable, resize
 for_window    [app_id="dmenu-browser"]                   resize set height 20ppt
 for_window    [app_id="dmenu-calc"]                      resize set width 40ppt height 30ppt
 
-include ~/.config/sway/colorscheme
+client.focused $color0 $background $foreground $color7 $background
 
-set $color_normal_white  #a89984
-set $color_bright_white  #ebdbb2
-set $color_normal_gray   #222222
-set $color_bright_gray   #3c3836
-set $color_bright_yellow #d79921
-set $color_normal_black  #282828
-set $color_unused        #ff0000
+bar {
+    swaybar_command waybar
+}
 
-# class                   border                 backgr.                text                   indicator            child_border
-client.focused            $color_bright_yellow   $color_bright_gray     $color_bright_white    $color_bright_gray   $color_bright_yellow
-client.focused_inactive   $color_bright_gray     $color_bright_gray     $color_bright_white    $color_bright_gray   $color_normal_black
-client.unfocused          $color_normal_gray     $color_normal_gray     $color_normal_white    $color_normal_gray   $color_normal_black
-client.urgent             $color_bright_yellow   $color_bright_yellow   $color_normal_black    $color_unused        $color_unused
-client.placeholder        $color_unused          $color_unused          $color_unused          $color_unused        $color_unused
-
-client.background       $bg
-
-exec sway-autoname-workspaces -d &
-exec waybar &
+exec ~/bin/sway-autoname-workspaces -d &
 include ~/.config/sway/odin
 include /etc/sway/config.d/*

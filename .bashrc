@@ -8,7 +8,7 @@
 PS1='$(prompt) \$ '
 
 export ENV=~/.env
-export PATH=~/bin/$HOSTNAME:~/bin/$(uname -m):~/bin:$PATH
+PATH=~/bin/$HOSTNAME:~/bin/$(uname -m):~/bin:~/.local/bin:$PATH
 export EDITOR=vim
 export LANG=en_US.UTF-8
 export PYTHONPATH=~/lib/python3:~/sources/core.sr.ht/:~/sources/scm.sr.ht
@@ -16,6 +16,7 @@ export GOPATH=~/.local/share/go
 export GOPROXY=direct
 #export GDK_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
+export PATH
 
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
@@ -30,15 +31,12 @@ set -b
 
 if [ -z "${SSH_AGENT_PID}" ]
 then
-	if ! [ -e /tmp/ssh-agent-$USER ]
+	if ! [ -e "/tmp/ssh-agent-$USER" ]
 	then
-		ssh-agent 2>/dev/null >/tmp/ssh-agent-$USER
+		ssh-agent 2>/dev/null >"/tmp/ssh-agent-$USER"
 	fi
-	. /tmp/ssh-agent-$USER >/dev/null
+	. "/tmp/ssh-agent-$USER" >/dev/null
 fi
-
-alias gdbs='gdbserver localhost:12345'
-alias gdbr='gdb -q -ex "target remote localhost:12345"'
 
 alias ed='ed -p "% "'
 
@@ -49,4 +47,6 @@ alias ip='ip -color=auto'
 alias n='newsboat -u $HOME/.newsboat/urls -c $HOME/.newsboat/cache.db'
 alias y='newsboat -u $HOME/.newsboat/youtube-urls -c $HOME/.newsboat/youtube-cache.db'
 alias glances='glances --disable-bg'
-alias t='todo.sh'
+
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh

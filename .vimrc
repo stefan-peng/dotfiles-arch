@@ -10,17 +10,13 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'junegunn/goyo.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'w0rp/ale'
+Plug 'dylanaraps/wal.vim'
 Plug 'lervag/vimtex'
-Plug 'morhetz/gruvbox'
-"Plug 'itchyny/lightline.vim'
-"Plug 'taohexxx/lightline-solarized'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vimwiki/vimwiki'
+Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
 
 "Basic
@@ -41,12 +37,7 @@ if !has('gui_running')
 endif
 syntax enable
 set background=dark
-"let g:solarized_termtrans = 1
-colorscheme gruvbox
-
-"let g:lightline = {
-"      \ 'colorscheme': 'solarized',
-"      \ }
+colorscheme wal
 
 "Text
 set linebreak
@@ -68,7 +59,7 @@ let g:vim_markdown_new_list_item_indent = 4
 autocmd BufNewFile,BufFilePre,BufRead *.md hi link mkdLineBreak Underlined
 
 "Vimwiki
-let g:vimwiki_list = [{'path': '~/Vault/',
+let g:vimwiki_list = [{'path': '~/OneDrive/Documents/School/HIST202-Notes/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 "Latex

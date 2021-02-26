@@ -2,10 +2,10 @@ browser "~/bin/rss-open"
 
 auto-reload yes
 reload-threads  100
-#color background          white   black
-#color listnormal          white   black
-#color listfocus           black   white  bold
-#color listnormal_unread   white   black
-#color listfocus_unread    black   white  bold
-#color info                white   black  bold
-#color article             white   black
+color background          white   black
+color listnormal          white   black
+color listfocus           black   white  bold
+color listnormal_unread   white   black
+color listfocus_unread    black   white  bold
+color info                white   black  bold
+color article             white   black
