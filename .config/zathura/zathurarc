@@ -1,3 +1,3 @@
 set render-loading              true
-set recolor                     "true"
+# set recolor                     "true"
 # set recolor-keephue             true      # keep original color

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+newsboat -u "$HOME"/.newsboat/youtube-urls -c "$HOME"/.newsboat/youtube-cache.db
