@@ -11,6 +11,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'junegunn/goyo.vim'
 Plug 'w0rp/ale'
+Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'dylanaraps/wal.vim'
 Plug 'lervag/vimtex'
 Plug 'pangloss/vim-javascript'
@@ -37,7 +38,7 @@ if !has('gui_running')
 endif
 syntax enable
 set background=dark
-colorscheme wal
+colorscheme dim
 
 "Text
 set linebreak
