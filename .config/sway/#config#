@@ -20,8 +20,6 @@ seat * hide_cursor 10000
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
-output HDMI-A-1 mode 1920x1080@75Hz position 0,0
-
 ### Idle configuration
 #
 exec swayidle -w \
@@ -259,6 +257,5 @@ bar {
 }
 
 exec ~/bin/sway-autoname-workspaces -d &
-exec gammastep &
 include ~/.config/sway/odin
 include /etc/sway/config.d/*
