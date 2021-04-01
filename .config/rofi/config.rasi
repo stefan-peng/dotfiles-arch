@@ -1,1 +1,6 @@
 @import "~/.cache/wal/colors-rofi-dark"
+
+* {
+    font: "IBM Plex Mono 12";
+    show-icons: true;
+}
