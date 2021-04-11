@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["sway/workspaces"],
     "modules-center": ["sway/window", "idle_inhibitor"],
-    "modules-right": ["tray", "pulseaudio", "battery", "clock"],
+    "modules-right": ["tray", "pulseaudio", "clock"],
     "sway/workspaces": {
         "enable-bar-scroll": true,
         "all-outputs": false,

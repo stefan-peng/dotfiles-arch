@@ -5,5 +5,5 @@ if printf "$1" | grep -q "youtube.com\|youtu.be\|mp4\|mkv\|webm"; then
     mpv "$1"
 else
     echo "$(date)	$1" >> $HOME/Documents/articles.txt
-    firefox "$1"
+    browser "$1"
 fi

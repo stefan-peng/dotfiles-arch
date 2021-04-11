@@ -1,4 +1,7 @@
 #!/bin/sh
 
-#QT_QPA_PLATFORM=wayland qutebrowser
-google-chrome-stable
+#QT_QPA_PLATFORM=wayland qutebrowser "$1"
+#google-chrome-stable "$1"
+#microsoft-edge-dev "$1"
+#brave "$1"
+firefox "$1"

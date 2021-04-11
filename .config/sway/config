@@ -12,7 +12,7 @@ set $right l
 set $term kitty
 #set $menu bemenu-run --no-overlap | xargs swaymsg exec --
 set $menu rofi -show run | xargs swaymsg exec --
-set $browser firefox
+set $browser browser
 
 seat * hide_cursor 10000
 
@@ -229,13 +229,13 @@ bindsym $mod+r mode "resize"
 #
 # Appearance:
 #
-font "pango:IBM Plex Mono"
+font "pango:Cascadia Code"
 default_border pixel
 
 gaps outer 5
 gaps inner 10
 
-output * background $wallpaper fill
+#output * background $wallpaper fill
 
 # Specific window configuration
 for_window    [app_id=".*"]                              sticky enable
