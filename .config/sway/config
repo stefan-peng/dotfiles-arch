@@ -12,7 +12,8 @@ set $right l
 set $term kitty
 #set $menu bemenu-run --no-overlap | xargs swaymsg exec --
 set $menu rofi -show run | xargs swaymsg exec --
-set $browser browser
+set $browser firefox
+#set $browser google-chrome-stable
 
 seat * hide_cursor 10000
 
@@ -20,7 +21,11 @@ seat * hide_cursor 10000
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
-output HDMI-A-1 mode 1920x1080@75Hz position 0,0
+output HDMI-A-1 {
+    mode 1920x1080@75Hz position 0,0
+    background $wallpaper fill
+}
+
 
 ### Idle configuration
 #
@@ -82,7 +87,7 @@ input "type:keyboard" {
     bindsym XF86AudioNext exec playerctl next
     bindsym XF86AudioPrev exec playerctl previous
     bindsym $mod+x exec swaylock -f -c 000000
-    bindsym $mod+BackSlash exec $browser
+    bindsym $mod+BackSlash exec $browser 
     bindsym $mod+Shift+w exec wal -i ~/tmp/
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -252,7 +257,7 @@ for_window    [app_id="dmenu-calc"]                      resize set width 40ppt 
 for_window    [class="Bitwarden"]                       floating enable
 for_window    [class="net-imagej-*"]                    floating enable
 
-client.focused $color0 $background $foreground $color7 $background
+client.focused $color0 $background $foreground $color7 $color7
 
 bar {
     swaybar_command waybar
