@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+#tee >(xmobar -x0 $HOME/.xmonad/xmobar.conf) | xmobar -x1 $HOME/.xmonad/xmobar.conf
+xmobar -x0 $HOME/.xmonad/xmobar.conf

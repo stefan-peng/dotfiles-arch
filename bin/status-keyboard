@@ -1,0 +1,44 @@
+#!/bin/sh
+
+#stdlayout=us  # standard layout takes "default" color
+#stdname=en-us # arbitrary, descriptive only
+
+english="xkb:us:altgr-intl:eng"
+chinese=libpinyin
+french="xkb:fr::fra"
+spanish="xkb:es::spa"
+german="xkb:de::ger"
+
+base03=#002b36
+base02=#073642
+base01=#586e75
+base00=#657b83
+base0=#839496
+base1=#93a1a1
+base2=#eee8d5
+base3=#fdf6e3
+yellow=#b58900
+orange=#cb4b16
+red=#dc322f
+magenta=#d33682
+violet=#6c71c4
+blue=#268bd2
+cyan=#2aa198
+green=#859900
+
+layout="$(ibus engine)"
+
+case $layout in
+    ${english}) color=$green; icon=" "; name=en ;; # f11c fa-keyboard-o
+    ${chinese}) color=$orange; icon=" "; name=cn ;; # f11c fa-keyboard-o
+    ${french})  color=$yellow; icon=" "; name=fr ;; # f11c fa-keyboard-o
+    ${spanish}) color=$yellow;  icon=" "; name=es ;; # f11c fa-keyboard-o
+    ${german})  color=$yellow;  icon=" "; name=de ;; # f11c fa-keyboard-o
+    *) color=$magenta; icon=" "; name="other" ;; # f11c fa-keyboard-o
+esac
+
+#color=$green; icon=" "; name=$layout
+
+echo "<fc=$color><fn=1>$icon</fn> ${name}</fc>"
+
+# vim: ft=sh:expandtab:ts=4:shiftwidth=4
