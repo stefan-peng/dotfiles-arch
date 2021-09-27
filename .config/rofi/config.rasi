@@ -2,5 +2,5 @@
 
 * {
     font: "Cascadia Code 12";
-    show-icons: true;
+    show-icons: false;
 }
