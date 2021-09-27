@@ -1,57 +1,83 @@
 {
     "layer": "top",
-    "modules-left": ["sway/workspaces"],
-    "modules-center": ["sway/window", "idle_inhibitor"],
-    "modules-right": ["tray", "pulseaudio", "clock"],
-    "sway/workspaces": {
-        "enable-bar-scroll": true,
-        "all-outputs": false,
-        "format": "{index}: {name}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "10":"",
-            "urgent": "",
-            "focused": "",
-            "default": ""
-        }
-    },
-    "battery": {
-        "format": "{capacity}% {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "sway/window": {
-        "max-length": 50
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "clock": {
-        "toolbar": false,
-        "interval": 1,
-        "format": "{:%F %R}",
-        "format-alt": "{:%c}"
-    },
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
-    "pulseaudio": {
-        "on-click": "pavucontrol",
-        "format": "{volume}% {icon}",
-        "format-muted": "",
-        "format-icons": {
-            "default": ["", ""]
-        }
-    },
+        "modules-left": ["sway/workspaces"],
+        "modules-center": ["sway/window", "idle_inhibitor"],
+        "modules-right": ["mpd", "tray", "pulseaudio", "clock"],
+        "sway/workspaces": {
+            "enable-bar-scroll": true,
+            "all-outputs": false,
+            "format": "{index}: {name}",
+            "format-icons": {
+                "1": "",
+                "2": "",
+                "": "",
+                "3": "",
+                "4": "",
+                "5": "",
+                "6": "",
+                "10":"",
+                "urgent": "",
+                "focused": "",
+                "default": ""
+            }
+        },
+        "battery": {
+            "format": "{capacity}% {icon}",
+            "format-icons": ["", "", "", "", ""]
+        },
+        "sway/window": {
+            "max-length": 30
+        },
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "",
+                "deactivated": ""
+            }
+        },
+        "mpd": {
+            "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+            "format-disconnected": "Disconnected ",
+            "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+            "interval": 10,
+            "max-length": 30,
+            "consume-icons": {
+                "on": " " // Icon shows only when "consume" is on
+            },
+            "random-icons": {
+                "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+                "on": " "
+            },
+            "repeat-icons": {
+                "on": " "
+            },
+            "single-icons": {
+                "on": "1 "
+            },
+            "state-icons": {
+                "paused": "",
+                "playing": ""
+            },
+            "tooltip-format": "MPD (connected)",
+            "tooltip-format-disconnected": "MPD (disconnected)"
+        },
+        "clock": {
+            "toolbar": false,
+                "interval": 1,
+                "format": "{:%F %R}",
+                "format-alt": "{:%c}"
+        },
+            "tray": {
+                "icon-size": 21,
+                "spacing": 10
+            },
+            "pulseaudio": {
+                "on-click": "pavucontrol",
+                "format": "{volume}% {icon}",
+                "format-muted": "",
+                "format-icons": {
+                    "default": ["", ""]
+                }
+            },
 }
 
