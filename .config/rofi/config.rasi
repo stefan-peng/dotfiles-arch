@@ -1,6 +1,6 @@
 @import "~/.cache/wal/colors-rofi-dark"
 
 * {
-    font: "Cascadia Code 12";
-    show-icons: false;
+    font: "Terminus 12";
+    show-icons: true;
 }

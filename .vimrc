@@ -11,6 +11,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'junegunn/goyo.vim'
 Plug 'w0rp/ale'
+Plug 'altercation/vim-colors-solarized'
 Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'dylanaraps/wal.vim'
 Plug 'lervag/vimtex'
@@ -34,11 +35,12 @@ set autowrite     " Automatically :write before running commands
 
 "Colors
 if !has('gui_running')
-  set t_Co=256
+"  set t_Co=256
 endif
 syntax enable
 set background=dark
-colorscheme dim
+let g:solarized_termtrans=1
+colorscheme solarized
 
 "Text
 set linebreak
