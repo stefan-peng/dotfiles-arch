@@ -10,6 +10,8 @@
 	browser = qutebrowser
 [alias]
 	fuckit = reset --hard
+    co = checkout
+    st = status
 [include]
 	path = ~/.config/git/secret
 [gitreview]
