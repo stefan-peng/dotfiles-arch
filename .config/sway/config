@@ -1,31 +1,45 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
 # Read `man 5 sway` for a complete reference.
+
 include ~/.cache/wal/colors-sway
 
 ### Variables
 #
-# Logo key. Use Mod1 for Alt, Mod4 for Win.
+# Logo key. Use Mod1 for Alt.
 set $mod Mod4
+# Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
+# Your preferred terminal emulator
 set $term kitty
-#set $menu bemenu-run --no-overlap | xargs swaymsg exec --
-set $menu rofi -show run | xargs swaymsg exec --
 set $browser firefox
-#set $browser google-chrome-stable
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu wofi --show drun | xargs swaymsg exec --
+set $laptop eDP-1
+set $monitor HDMI-A-2
 
-seat * hide_cursor 10000
+### Output configuration
+#
+output * bg $wallpaper fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+output * adaptive_sync on
 
 # Clamshell mode
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
-
-output HDMI-A-1 {
-    mode 1920x1080@75Hz position 0,0
-    background $wallpaper fill
-}
-
 
 ### Idle configuration
 #
@@ -35,38 +49,33 @@ exec swayidle -w \
            resume 'swaymsg "output * dpms on"' \
       before-sleep '~/.config/swaylock/lock.sh'
 
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
 ### Input configuration
 #
 # Example configuration:
 #
-input "2:7:SynPS/2_Synaptics_TouchPad" {
-    dwt enabled
-    tap enabled
-    natural_scroll enabled
-    middle_emulation enabled
-}
-
-# Disable cursor jumping
-mouse_warping none
-focus_follows_mouse yes
-
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+input "type:pointer" {
+    #scroll_factor .2
+}
 
 input "type:keyboard" {
     xkb_layout us
-    xkb_variant altgr-intl
-    xkb_options ctrl:nocaps,compose:menu,level3:ralt_switch
+    xkb_options ctrl:nocaps
 }
 
 ### Key bindings
 #
 # Basics:
 #
+    bindsym $mod+p output $laptop toggle
     # Start a terminal
     bindsym $mod+Return exec $term
 
@@ -100,10 +109,6 @@ input "type:keyboard" {
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
-    # Restart sway inplace (preserves your layout/session, can be used to upgrade sway)
-    bindsym $mod+Shift+r restart
-
-
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 #
@@ -133,43 +138,30 @@ input "type:keyboard" {
 #
 # Workspaces:
 #
-    set $workspace1 workspace number 1
-    set $workspace2 workspace number 2
-    set $workspace3 workspace number 3
-    set $workspace4 workspace number 4
-    set $workspace5 workspace number 5
-    set $workspace6 workspace number 6
-    set $workspace7 workspace number 7
-    set $workspace8 workspace number 8
-    set $workspace9 workspace number 9
-    set $workspace0 workspace number 10
-
     # Switch to workspace
-    bindsym $mod+1 $workspace1
-    bindsym $mod+2 $workspace2
-    bindsym $mod+3 $workspace3
-    bindsym $mod+4 $workspace4
-    bindsym $mod+5 $workspace5
-    bindsym $mod+6 $workspace6
-    bindsym $mod+7 $workspace7
-    bindsym $mod+8 $workspace8
-    bindsym $mod+9 $workspace9
-    bindsym $mod+0 $workspace10
-
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to $workspace1
-    bindsym $mod+Shift+2 move container to $workspace2
-    bindsym $mod+Shift+3 move container to $workspace3
-    bindsym $mod+Shift+4 move container to $workspace4
-    bindsym $mod+Shift+5 move container to $workspace5
-    bindsym $mod+Shift+6 move container to $workspace6
-    bindsym $mod+Shift+7 move container to $workspace7
-    bindsym $mod+Shift+8 move container to $workspace8
-    bindsym $mod+Shift+9 move container to $workspace9
-    bindsym $mod+Shift+0 move container to $workspace10
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-
 #
 # Layout stuff:
 #
@@ -192,6 +184,7 @@ input "type:keyboard" {
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
+
     # Move focus to the parent container
     bindsym $mod+a focus parent
 #
@@ -234,34 +227,21 @@ bindsym $mod+r mode "resize"
 #
 # Appearance:
 #
-font "pango:Cascadia Code"
-default_border pixel
+font IBM Plex Mono, Noto Color Emoji
 
-gaps outer 5
-gaps inner 10
-
-# Specific window configuration
-for_window    [app_id=".*"]                              sticky enable
-for_window    [window_role="pop-up"]                     floating enable
-for_window    [app_id="udiskie"]                         floating enable
-for_window    [class="ksnip"]                            fullscreen enable
-#for_window    [app_id="firefox"]                         move container to $workspace2, title_format "Firefox"
-for_window    [class="Wire"]                             move container to $workspace3
-for_window    [app_id="neomutt"]                         move container to $workspace4, title_format "NeoMutt"
-for_window    [title="Firefox - Sharing Indicator"]      floating enable
-for_window    [app_id="dmenu.*"]                         floating enable, resize set width 60ppt height 80ppt
-for_window    [app_id="dmenu-browser"]                   resize set height 20ppt
-for_window    [app_id="dmenu-calc"]                      resize set width 40ppt height 30ppt
-for_window    [class="Bitwarden"]                       floating enable
-for_window    [class="net-imagej-*"]                    floating enable
 for_window    [app_id="pavucontrol"]                     floating enable
+for_window    [title="Firefox - Sharing Indicator"]      floating enable
 
 client.focused $color0 $background $foreground $color7 $color7
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
 
 bar {
     swaybar_command waybar
 }
 
 exec ~/bin/sway-autoname-workspaces -d &
-exec gammastep &
 include /etc/sway/config.d/*

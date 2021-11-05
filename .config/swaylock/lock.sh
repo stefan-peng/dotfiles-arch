@@ -1,10 +1,12 @@
 source "$HOME/.cache/wal/colors.sh"
 
 swaylock \
-  --image "$wallpaper" \
-  --daemonize \
+  --screenshots \
+  --clock \
+  --indicator \
   --indicator-radius 160 \
   --indicator-thickness 20 \
+  --effect-blur 7x5 \
   --inside-color 00000000 \
   --inside-clear-color 00000000 \
   --inside-ver-color 00000000 \
