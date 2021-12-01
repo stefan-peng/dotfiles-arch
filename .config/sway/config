@@ -17,7 +17,8 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty
-set $browser firefox
+set $browser brave --use-gl=desktop --enable-features=VaapiVideoDecoder
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -27,7 +28,7 @@ set $monitor HDMI-A-2
 
 ### Output configuration
 #
-output * bg $wallpaper fill
+output * bg "#2e3440" solid_color
 #
 # Example configuration:
 #
@@ -227,7 +228,7 @@ bindsym $mod+r mode "resize"
 #
 # Appearance:
 #
-font IBM Plex Mono, Noto Color Emoji
+font Terminus, Noto Color Emoji
 
 for_window    [app_id="pavucontrol"]                     floating enable
 for_window    [title="Firefox - Sharing Indicator"]      floating enable

@@ -227,8 +227,8 @@ projects =
 
 myTerminal          = "urxvt"
 myAltTerminal       = "st -e"
---myBrowser           = "chromium --force-device-scale-factor=2" 
-myBrowser           = "firefox"
+myBrowser           = "google-chrome-stable --use-gl=desktop --enable-features=VaapiVideoDecoder" 
+--myBrowser           = "firefox"
 myFileManager       = "spacefm"
 --myBrowserClass	    = "chromium"
 myBrowserClass      = "firefox"

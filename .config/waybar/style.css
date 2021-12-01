@@ -3,7 +3,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "IBM Plex Mono", "Font Awesome 5 Free";
+    font-family: "Terminus", "Font Awesome 5 Free";
     font-size: 18;
     min-height: 0;
 }
@@ -14,7 +14,7 @@ window#waybar {
 }
 
 #window {
-    font-family: "IBM Plex Mono", "Font Awesome 5 Free";
+    font-family: "Terminus", "Font Awesome 5 Free";
 }
 
 #workspaces button {
