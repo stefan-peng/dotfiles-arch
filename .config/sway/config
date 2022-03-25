@@ -17,7 +17,8 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty
-set $browser brave --use-gl=desktop --enable-features=VaapiVideoDecoder
+# set $browser brave --use-gl=desktop --enable-features=VaapiVideoDecoder
+set $browser firefox
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
