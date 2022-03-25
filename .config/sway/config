@@ -228,7 +228,7 @@ bindsym $mod+r mode "resize"
 #
 # Appearance:
 #
-font Terminus, Noto Color Emoji
+font Cascadia Code, Noto Color Emoji
 
 for_window    [app_id="pavucontrol"]                     floating enable
 for_window    [title="Firefox - Sharing Indicator"]      floating enable
