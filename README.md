@@ -1,0 +1,30 @@
+# dotfiles-arch
+
+My dotfiles, mainly intended for Arch.
+
+1. Install `yay`
+
+```
+pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+```
+
+2. Install `yadm`
+
+```
+yay -S yadm
+```
+
+3. Clone dotfiles
+
+```
+yadm clone git@github.com:stefan-peng/dotfiles-arch.git
+```
+
+4. Install other needed packages
+
+```
+yay -S --needed - < pkgs
+```
