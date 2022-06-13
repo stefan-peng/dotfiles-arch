@@ -30,7 +30,7 @@ set $monitor HDMI-A-2
 
 ### Output configuration
 #
-output * bg "#2e3440" solid_color
+output * bg $wallpaper fill
 #
 # Example configuration:
 #
@@ -101,10 +101,10 @@ input "type:keyboard" {
     bindsym XF86AudioNext exec mpc next
     bindsym XF86AudioPrev exec mpc prev
     bindsym $mod+x exec ~/.config/swaylock/lock.sh
-    bindsym $mod+shift+x exec systemctl susped
+    bindsym $mod+shift+x exec systemctl suspend
     bindsym $mod+BackSlash exec $browser 
     bindsym $mod+Shift+BackSlash exec $browser --private-window
-    bindsym $mod+Shift+w exec wal -i ~/Pictures/Wallpapers/
+    bindsym $mod+Shift+w exec wal -i ~/Pictures/wallpapers/
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
