@@ -2,6 +2,8 @@
 
 My dotfiles, mainly intended for Arch.
 
+0. Install ssh keys
+
 1. Install `yay`
 
 ```
