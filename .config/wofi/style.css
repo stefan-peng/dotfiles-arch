@@ -1,11 +1,13 @@
+@import ~/.cache/wal/colors;
+
 * {
   font-family: Cascadia Code;
-  color: #e5e9f0;
+  color: --wofi-color15;
 }
 
 window {
-  background-color: #2e3440;
-  border: 2px solid #88c0d0;
+  background-color: --wofi-color0;
+  border: 2px solid --wofi-color8;
   border-radius: 4px;
 }
 
@@ -15,13 +17,14 @@ window {
 
 #input {
   border: none;
-  background-color: #2e3440;
+  background-color: --wofi-color0;
+  color: --wofi-color15;
   margin: 7px;
-  box-shadow: none; /* Remove blue "border" */
+  box-shadow: none; /* Remove "border" */
 }
 
 #inner-box {
-  background-color: #2e3440;
+  background-color: --wofi-color0;
   margin: 7px;
   margin-top: 0;
 }
@@ -35,7 +38,7 @@ window {
 }
 
 #entry:selected {
-  background-color: #44475a;
+  background-color: --wofi-color10;
 }
 
 #text {
