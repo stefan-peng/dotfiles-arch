@@ -18,8 +18,9 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 # set $browser brave --use-gl=desktop --enable-features=VaapiVideoDecoder
-# set $browser MOZ_ENABLE_WAYLAND=1 firefox
-set $browser google-chrome-stable
+set $browser MOZ_ENABLE_WAYLAND=1 firefox
+# set $browser google-chrome-stable
+set $randomizetheme wal -i ~/Pictures/wallpapers/
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -104,7 +105,7 @@ input "type:keyboard" {
     bindsym $mod+shift+x exec systemctl suspend
     bindsym $mod+BackSlash exec $browser 
     bindsym $mod+Shift+BackSlash exec $browser --private-window
-    bindsym $mod+Shift+w exec wal -i ~/Pictures/wallpapers/
+    bindsym $mod+Shift+w exec $randomizetheme
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -239,7 +240,12 @@ font Cascadia Code, Noto Color Emoji
 for_window    [app_id="pavucontrol"]                     floating enable
 for_window    [title="Firefox - Sharing Indicator"]      floating enable
 
-client.focused $color0 $background $foreground $color7 $color7
+client.focused $color1 $background $foreground $color7 $color7
+client.unfocused $color7 $background $foreground $color7 $color7
+# client.focused_inactive
+# client.urgent
+# client.placeholder
+# client.background
 
 #
 # Status Bar:
@@ -251,4 +257,5 @@ bar {
 }
 
 exec ~/bin/sway-autoname-workspaces -d &
+exec $randomizetheme &
 include /etc/sway/config.d/*
