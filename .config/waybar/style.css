@@ -36,7 +36,7 @@ window#waybar {
 
 #clock, #idle_inhibitor, #pulseaudio, #tray, #mode, #disk {
     padding: 0 5px;
-    margin: 0 5px;
+    margin: 0 50px;
 }
 
 #clock {
