@@ -283,10 +283,10 @@ inactive    = base02
 focusColor  = blue
 unfocusColor = base02
 
-myFont = "xft:xos4 Terminus:pixelsize=12"
-myBigFont   = "xft:xos4 Terminus:pixelsize=16"
+myFont = "xft:xos4 Terminus:size=12"
+myBigFont   = "xft:xos4 Terminus:size=16"
 myWideFont  = "xft:Eurostar Black Extended:"
-            ++ "style=Regular:pixelsize=90:hinting=true"
+            ++ "style=Regular:size=90:hinting=true"
 
 -- this is a "fake title" used as a highlight bar in lieu of full borders
 -- (I find this a cleaner and less visually intrusive solution)

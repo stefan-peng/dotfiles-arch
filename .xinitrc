@@ -2,6 +2,7 @@
 
 setxkbmap -model thinkpad -layout us -option ctrl:nocaps
 xrdb -merge .Xresources &
-# xrandr --dpi 192 &
+xrandr --dpi 192 &
+xset -b &
 # slstatus &
 exec xmonad

@@ -18,10 +18,10 @@ fi
 PS1='$(prompt) \$ '
 
 export PATH=~/bin:~/.local/bin:$PATH:/usr/local/go/bin
-export EDITOR=nvim
+export EDITOR=vim
 export LANG=en_US.UTF-8
 #export GDK_BACKEND=wayland
-export MOZ_ENABLE_WAYLAND=1
+#export MOZ_ENABLE_WAYLAND=1
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
@@ -38,9 +38,9 @@ alias y='newsboat -u $HOME/.newsboat/youtube-urls -c $HOME/.newsboat/youtube-cac
 alias glances='glances --disable-bg'
 alias ss='mpv --profile=skipsilence'
 alias qutebrowser='qutebrowser --qt-flag ignore-gpu-blacklist --qt-flag enable-gpu-rasterization --qt-flag enable-native-gpu-memory-buffers --qt-flag num-raster-threads=4'
-alias wtr='curl v2.wttr.in'
-alias cat='bat'
-alias ls='lsd'
+alias wtr='curl wttr.in'
+#alias cat='bat'
+#alias ls='lsd'
 alias ll='ls -l'
 alias la='ls -a'
 

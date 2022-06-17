@@ -166,7 +166,7 @@ URxvt*termName: xterm-256color
 !! cf https://github.com/muennich/urxvt-perls
 
 !XFT
-Xft.dpi       : 96
+Xft.dpi       : 192
 Xft.lcdfilter : lcddefault
 Xft.hintstyle : hintslight
 Xft.hinting   : true
@@ -175,8 +175,8 @@ Xft.rgba      : rgb
 
 ! Fonts
 URxvt.allow_bold: false
-URxvt*font: xft:Terminus (TTF):pixelsize=12
-URxvt*boldFont: xft:Terminus (TTF):pixelsize=12
+URxvt*font: xft:xos4 Terminus:size=12
+URxvt*boldFont: xft:xos4 Terminus:size=12
 URxvt.intensityStyles: false
 
 

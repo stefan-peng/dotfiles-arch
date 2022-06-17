@@ -40,8 +40,8 @@ if !has('gui_running')
 endif
 syntax enable
 set background=dark
-"let g:solarized_termtrans=1
-colorscheme wal
+let g:solarized_termtrans=1
+colorscheme solarized
 
 "Text
 set linebreak

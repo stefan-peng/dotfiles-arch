@@ -1,6 +1,6 @@
 #!/bin/sh
 
-dev_wifi=wlp4s0 
+dev_wifi=wlan0 
 dev_eth=enp0s31f6 
 dev_vpn=tun0
 
@@ -103,7 +103,8 @@ else
     vpn_status="<fn=1></fn> "
 fi
 
-echo "<fc=$color>${vpn_status}<fn=1>$icon</fn>${connectivity##*full}$wifi_status$eth_status</fc>"
+#echo "<fc=$color>${vpn_status}<fn=1>$icon</fn>${connectivity##*full}$wifi_status$eth_status</fc>"
+echo "<fc=$color><fn=1>$icon</fn>${connectivity##*full}$wifi_status$eth_status</fc>"
 
 
 # vim: ft=sh:expandtab:ts=4:shiftwidth=4
