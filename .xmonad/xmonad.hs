@@ -1,17 +1,4 @@
 {-# LANGUAGE AllowAmbiguousTypes, DeriveDataTypeable, TypeSynonymInstances, MultiParamTypeClasses #-}
----------------------------------------------------------------------------
---                                                                       --
---     _|      _|  _|      _|                                      _|    --
---       _|  _|    _|_|  _|_|    _|_|    _|_|_|      _|_|_|    _|_|_|    --
---         _|      _|  _|  _|  _|    _|  _|    _|  _|    _|  _|    _|    --
---       _|  _|    _|      _|  _|    _|  _|    _|  _|    _|  _|    _|    --
---     _|      _|  _|      _|    _|_|    _|    _|    _|_|_|    _|_|_|    --
---                                                                       --
----------------------------------------------------------------------------
--- Ethan Schoonover <es@ethanschoonover.com> @ethanschoonover            --
--- https://github.com/altercation                                        --
----------------------------------------------------------------------------
--- current as of XMonad 0.12
 
 ------------------------------------------------------------------------}}}
 -- Modules                                                              {{{
@@ -978,6 +965,8 @@ myKeys conf = let
     , ("<XF86AudioMute>"        , addName "Toggle mute"                     $ spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
     , ("<XF86AudioLowerVolume>" , addName "Lower volume"                    $ spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%")
     , ("<XF86AudioRaiseVolume>" , addName "Raise volume"                    $ spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%")
+    , ("<XF86MonBrightnessUp>"  , addName "Increase screen brightness"      $ spawn "brightnessctl set +5%")
+    , ("<XF86MonBrightnessDown>", addName "Decrease screen brightness"      $ spawn "brightnessctl set 5%-")
     ] ^++^
 
     -----------------------------------------------------------------------
