@@ -1,7 +1,7 @@
 {
     "layer": "top",
         "modules-left": ["sway/workspaces"],
-        "modules-center": ["sway/window", "idle_inhibitor"],
+        "modules-center": ["sway/window", "idle_inhibitor", "mpd"],
         "modules-right": ["tray", "pulseaudio", "battery", "clock"],
         "sway/workspaces": {
             "enable-bar-scroll": true,
