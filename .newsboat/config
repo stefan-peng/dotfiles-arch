@@ -2,6 +2,8 @@ browser "~/bin/rss-open"
 
 auto-reload yes
 reload-threads  100
+confirm-mark-feed-read no
+text-width 80
 
 color background         default   default
 color listnormal         default   default
