@@ -9,8 +9,8 @@ settings:
   bindings.commands:
     global:
       normal:
-        ',M': hint links spawn mpv {hint-url}
-        ',m': spawn mpv {url}
-  content.notifications:
+        ',M': hint links spawn rss-open {hint-url}
+        ',m': spawn rss-open {url}
+  content.notifications.enabled:
     https://www.reddit.com: false
     https://www.youtube.com: false
