@@ -5,6 +5,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 # [ -r ~/.cache/wal/sequences ] && (/usr/bin/cat ~/.cache/wal/sequences &)
 # [ -r ~/.cache/wal/colors-tty.sh ] && source ~/.cache/wal/colors-tty.sh
 
@@ -25,7 +29,7 @@ export LANG=en_US.UTF-8
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-export QT_QPA_PLATFORM=wayland
+#export QT_QPA_PLATFORM=wayland
 
 set -b
 
@@ -43,5 +47,6 @@ alias wtr='curl wttr.in'
 #alias ls='lsd'
 alias ll='ls -l'
 alias la='ls -a'
+alias unzip='atool --extract --explain'
 
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
