@@ -220,10 +220,11 @@ myBrowser           = "google-chrome-stable --use-gl=desktop --enable-features=V
 myFileManager       = "spacefm"
 --myBrowserClass        = "chromium"
 myBrowserClass      = "firefox"
-myStatusBar         = "xmobar -x0 $HOME/.xmonad/xmobar.conf"
+myStatusBar         = "xmobar -x0 $HOME/.config/xmonad/xmobar.conf"
 --myLauncher          = "dmenu_run"
 --myLauncher          = "rofi -matching fuzzy -show run"
-myLauncher          = "rofi -matching fuzzy -modi combi -show combi -combi-modi run,drun"
+--myLauncher          = "rofi -matching fuzzy -modi combi -show combi -combi-modi run,drun"
+myLauncher          = "launcher"
 
 
 -- This system utilizes:
