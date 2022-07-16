@@ -121,6 +121,7 @@ main = do
         -- $ withUrgencyHook NoUrgencyHook
         $ withUrgencyHook LibNotifyUrgencyHook
         $ ewmh
+        $ docks
         $ addDescrKeys' ((myModMask, xK_F1), showKeybindings) myKeys
         $ myConfig xmproc
 
@@ -217,7 +218,7 @@ myAltTerminal       = "st -e"
 myBrowser           = "google-chrome-stable --use-gl=desktop --enable-features=VaapiVideoDecoder" 
 --myBrowser           = "firefox"
 myFileManager       = "spacefm"
---myBrowserClass	    = "chromium"
+--myBrowserClass        = "chromium"
 myBrowserClass      = "firefox"
 myStatusBar         = "xmobar -x0 $HOME/.xmonad/xmobar.conf"
 --myLauncher          = "dmenu_run"
@@ -900,14 +901,14 @@ shiftAndView dir = findWorkspace getSortByIndex dir (WSIs notSP) 1
         >>= \t -> (windows . W.shift $ t) >> (windows . W.greedyView $ t)
 
 -- hidden, non-empty workspaces less scratchpad
-shiftAndView' dir = findWorkspace getSortByIndexNoSP dir HiddenNonEmptyWS 1
+shiftAndView' dir = findWorkspace getSortByIndexNoSP dir (hiddenWS :&: XMonad.Actions.CycleWS.Not emptyWS) 1
         >>= \t -> (windows . W.shift $ t) >> (windows . W.greedyView $ t)
-nextNonEmptyWS = findWorkspace getSortByIndexNoSP Next HiddenNonEmptyWS 1
+nextNonEmptyWS = findWorkspace getSortByIndexNoSP Next (hiddenWS :&: XMonad.Actions.CycleWS.Not emptyWS) 1
         >>= \t -> (windows . W.view $ t)
-prevNonEmptyWS = findWorkspace getSortByIndexNoSP Prev HiddenNonEmptyWS 1
+prevNonEmptyWS = findWorkspace getSortByIndexNoSP Prev (hiddenWS :&: XMonad.Actions.CycleWS.Not emptyWS) 1
         >>= \t -> (windows . W.view $ t)
 getSortByIndexNoSP =
-        fmap (.namedScratchpadFilterOutWorkspace) getSortByIndex
+        fmap (.filterOutWs [scratchpadWorkspaceTag]) getSortByIndex
 
 -- toggle any workspace but scratchpad
 myToggle = windows $ W.view =<< W.tag . head . filter 
@@ -932,7 +933,7 @@ myKeys conf = let
     swapMaster' (W.Stack f u d) = W.Stack f [] $ reverse u ++ d
 
     -- try sending one message, fallback if unreceived, then refresh
-    tryMsgR x y = sequence_ [(tryMessage_ x y), refresh]
+    tryMsgR x y = sequence_ [(tryMessageWithNoRefreshToCurrent x y), refresh]
 
     -- warpCursor = warpToWindow (9/10) (9/10)
 
@@ -1022,7 +1023,7 @@ myKeys conf = let
     , ("M-z u"                  , addName "Focus urgent"                    focusUrgent)
     , ("M-z m"                  , addName "Focus master"                    $ windows W.focusMaster)
 
-    --, ("M-<Tab>"              	, addName "Focus down"                      $ windows W.focusDown)
+    --, ("M-<Tab>"                  , addName "Focus down"                      $ windows W.focusDown)
     --, ("M-S-<Tab>"              , addName "Focus up"                        $ windows W.focusUp)
 
     , ("M-'"                    , addName "Navigate tabs D"                 $ bindOn LD [("Tabs", windows W.focusDown), ("", onGroup W.focusDown')])
@@ -1191,10 +1192,10 @@ myKeys conf = let
     --  ("M4-C-S-."               , addName "toSubl Shrink"               $ toSubl Shrink)
     --, ("M4-C-S-,"               , addName "toSubl Expand"               $ toSubl Expand)
     ]
-		where
-			toggleCopyToAll = wsContainingCopies >>= \ws -> case ws of
-							[] -> windows copyToAll
-							_ -> killAllOtherCopies
+        where
+            toggleCopyToAll = wsContainingCopies >>= \ws -> case ws of
+                            [] -> windows copyToAll
+                            _ -> killAllOtherCopies
 
     -----------------------------------------------------------------------
     -- Screens
@@ -1292,7 +1293,6 @@ myLogHook h = do
                  | otherwise = pad ws
 
     fadeWindowsLogHook myFadeHook
-    ewmhDesktopsLogHook
     --dynamicLogWithPP $ defaultPP
     dynamicLogWithPP $ def
 
@@ -1308,7 +1308,7 @@ myLogHook h = do
         , ppOrder               = id
         , ppOutput              = hPutStrLn h  
         , ppSort                = fmap 
-                                  (namedScratchpadFilterOutWorkspace.)
+                                  (filterOutWs [scratchpadWorkspaceTag].)
                                   (ppSort def)
                                   --(ppSort defaultPP)
         , ppExtras              = [] }
@@ -1394,8 +1394,7 @@ myManageHook =
 -- THUS, to cut a long comment short, no fullscreenEventHook
 -- <+> XMonad.Hooks.EwmhDesktops.fullscreenEventHook
 
-myHandleEventHook = docksEventHook
-                <+> fadeWindowsEventHook
+myHandleEventHook = fadeWindowsEventHook
                 <+> dynamicTitle myDynHook
                 <+> handleEventHook def
                 <+> XMonad.Layout.Fullscreen.fullscreenEventHook
