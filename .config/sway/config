@@ -18,9 +18,9 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 # set $browser brave --use-gl=desktop --enable-features=VaapiVideoDecoder
-# set $browser MOZ_ENABLE_WAYLAND=1 firefox
-set $browser google-chrome-stable --use-gl=desktop --enable-features=VaapiVideoDecoder
-set $randomizetheme wal -i ~/Pictures/wallpapers/
+set $browser MOZ_ENABLE_WAYLAND=1 firefox
+# set $browser google-chrome-stable --use-gl=desktop --enable-features=VaapiVideoDecoder
+set $randomizetheme wal -i ~/Documents/Wallpapers/
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -30,8 +30,8 @@ set $laptop eDP-1
 set $monitor HDMI-A-2
 
 ### Output configuration
-#
 output * bg $wallpaper fill
+
 #
 # Example configuration:
 #
@@ -75,6 +75,7 @@ input "type:pointer" {
 input "type:keyboard" {
     xkb_layout us
     xkb_options ctrl:nocaps
+    xkb_numlock enable
 }
 
 ### Key bindings
