@@ -1,6 +1,11 @@
 #!/bin/sh
 
 # ----------------------------------------------------------------------
+# auto configure displays
+
+displayctl auto &
+
+# ----------------------------------------------------------------------
 # lockscreen script handles my locker du jour. Right now I use
 # xscreensaver, which is automatically launched in daemon mode by the
 # lockscreen script if not already running. I can switch to i3lock in
@@ -10,8 +15,9 @@ xss-lock slock &
 
 # ----------------------------------------------------------------------
 # start compositing for window transparency
+
 pkill picom
-picom --experimental-backends --backend=glx --xrender-sync-fence & # test as per https://github.com/chjj/compton/wiki/perf-guide
+picom --experimental-backends --backend=glx --xrender-sync-fence -b # test as per https://github.com/chjj/compton/wiki/perf-guide
 
 
 # ----------------------------------------------------------------------

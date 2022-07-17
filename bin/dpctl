@@ -363,7 +363,6 @@ internal () {
     for OUTPUT in $ALL_OUTPUTS
     do
     case $OUTPUT in
-        #$INTERNAL_OUTPUT) CMD="$CMD --output $OUTPUT --primary --scale 0.5x0.5 --filter nearest" ;;
         $INTERNAL_OUTPUT) CMD="$CMD --output $OUTPUT --primary --auto" ;;
         *) CMD="$CMD --output $OUTPUT --off" ;;
     esac
@@ -388,7 +387,7 @@ external () {
 }
 
 span () {
-    CMD="$CMDBASE --output $INTERNAL_OUTPUT --scale 0.5x0.5 --filter nearest --primary --mode $INTERNAL_OUTPUT_MODE --pos 0x0"
+    CMD="$CMDBASE --output $INTERNAL_OUTPUT --scale 1x1 --primary --mode $INTERNAL_OUTPUT_MODE --pos 0x0"
     NEIGHBOR=$INTERNAL_OUTPUT
 
     for OUTPUT in $ALL_OUTPUTS
@@ -396,7 +395,7 @@ span () {
         eval '
         case $OUTPUT in
             $INTERNAL_OUTPUT) : ;; 
-            '$CONNECTED_OUTPUTS') CMD="$CMD --output $OUTPUT --scale 1x1 --auto --left-of $NEIGHBOR"; NEIGHBOR=$OUTPUT ;;
+            '$CONNECTED_OUTPUTS') CMD="$CMD --output $OUTPUT --scale 1x1 --auto --right-of $NEIGHBOR"; NEIGHBOR=$OUTPUT ;;
             *) : ;;
         esac'
     done

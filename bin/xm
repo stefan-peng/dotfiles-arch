@@ -1,0 +1,29 @@
+#!/bin/bash
+
+menu () {
+    items="internal external"
+    result=$((for item in $items; do echo $item; done) | launcher "Display Mode")
+    case ${result:-} in
+        in*)    internal    ;;
+        ex*)    external    ;;
+        *)      :           ;;
+    esac
+}
+
+internal () {
+    xrandr --output eDP1 --primary --auto --output HDMI2 --off;
+    xrdb -merge "$HOME"/.Xresources-hidpi;
+    xmonad --restart
+}
+
+external () {
+    xrandr --output eDP1 --off --output HDMI2 --primary --auto;
+    xrdb -merge "$HOME"/.Xresources-lodpi;
+    xmonad --restart
+}
+
+case ${1:-auto} in
+    menu)   menu        ;;
+    in*)    internal    ;;
+    ex*)    external    ;;
+esac

@@ -1,5 +1,5 @@
 #!/bin/sh
 
 # firefox "$1"
-# google-chrome-stable --use-gl=desktop --enable-features=VaapiVideoDecoder --enable-features=UseOzonePlatform --ozone-platform=wayland "$1"
-brave --use-gl=desktop --enable-features=VaapiVideoDecoder "$1"
+google-chrome-stable --use-gl=desktop --enable-features=VaapiVideoDecoder --enable-features=UseOzonePlatform --ozone-platform=wayland "$1"
+# brave --use-gl=desktop --enable-features=VaapiVideoDecoder "$1"

@@ -1,8 +1,7 @@
 # hash fswebcam && fswebcam -q --no-banner -r 1280x720 ~/private/login-photos/$(date +%Y-%m-%dT%H).jpg &
 
 setxkbmap -model thinkpad -layout us -option ctrl:nocaps
-xrdb -merge .Xresources &
-xrandr --dpi 192 &
+xrdb -load .Xresources &
 xset -b &
-# slstatus &
+redshift -l 39.2046 -77.2290 &
 exec xmonad

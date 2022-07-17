@@ -154,10 +154,11 @@ wsSYS   = "SYS"
 wsWEB   = "WEB"
 wsVIX   = "VIX"
 wsWRK   = "WRK"
+wsMUS   = "MUS"
 wsFLOAT = "FLT"
 
 -- myWorkspaces = map show [1..9]
-myWorkspaces = [wsGEN, wsWEB, wsVIX, wsDMO, wsMON]
+myWorkspaces = [wsGEN, wsWEB, wsVIX, wsDMO, wsMON, wsMUS]
 
 projects :: [Project]
 projects =
@@ -186,8 +187,8 @@ projects =
                 }
 
     , Project   { projectName       = wsVIX
-                , projectDirectory  = "~/.xmonad"
-                , projectStartHook  = Just $ do runInTerm "-name vix" "vim ~/.xmonad/xmonad.hs"
+                , projectDirectory  = "~/.config/xmonad"
+                , projectStartHook  = Just $ do runInTerm "-name vix" "vim ~/.config/xmonad/xmonad.hs"
                 }
 
     , Project   { projectName       = wsMON
@@ -205,6 +206,11 @@ projects =
                 , projectDirectory  = "~/"
                 , projectStartHook  = Just $ do spawn myBrowser
                 }
+
+    , Project   { projectName       = wsMUS
+                , projectDirectory  = "~/"
+                , projectStartHook  = Just $ do spawn myMusic
+                }
     ]
 
 ------------------------------------------------------------------------}}}
@@ -213,18 +219,14 @@ projects =
 
 -- | Uses supplied function to decide which action to run depending on current workspace name.
 
-myTerminal          = "urxvt"
+myTerminal          = "kitty"
 myAltTerminal       = "st -e"
-myBrowser           = "google-chrome-stable --use-gl=desktop --enable-features=VaapiVideoDecoder" 
---myBrowser           = "firefox"
+myBrowser           = "firefox"
 myFileManager       = "spacefm"
---myBrowserClass        = "chromium"
-myBrowserClass      = "firefox"
+myBrowserClass      = "chrome"
+myMusic             = "ytmusic"
 myStatusBar         = "xmobar -x0 $HOME/.config/xmonad/xmobar.conf"
---myLauncher          = "dmenu_run"
---myLauncher          = "rofi -matching fuzzy -show run"
---myLauncher          = "rofi -matching fuzzy -modi combi -show combi -combi-modi run,drun"
-myLauncher          = "launcher"
+myLauncher          = "applauncher"
 
 
 -- This system utilizes:
@@ -272,8 +274,8 @@ inactive    = base02
 focusColor  = blue
 unfocusColor = base02
 
-myFont = "xft:xos4 Terminus:size=12"
-myBigFont   = "xft:xos4 Terminus:size=16"
+myFont = "xft:Cascadia Code:size=12"
+myBigFont   = "xft:Cascadia Code:size=16"
 myWideFont  = "xft:Eurostar Black Extended:"
             ++ "style=Regular:size=90:hinting=true"
 
@@ -961,6 +963,7 @@ myKeys conf = let
     , ("M-C-q"                  , addName "Rebuild & restart XMonad"        $ spawn "xmonad --recompile && xmonad --restart")
     , ("M-S-q"                  , addName "Quit XMonad"                     $ confirmPrompt hotPromptTheme "Quit XMonad" $ io (exitWith ExitSuccess))
     , ("M-x"                    , addName "Lock screen"                     $ spawn "slock")
+    , ("M-S-x"                  , addName "Suspend system"                  $ spawn "systemctl suspend")
     --, ("M-x"                    , addName "Lock screen"                     $ spawn "xset s activate")
     , ("M-<F4>"                    , addName "Print Screen"                    $ return ())
   --, ("M-F1"                   , addName "Show Keybindings"                $ return ())
@@ -978,9 +981,9 @@ myKeys conf = let
     [ ("M-a"                    , addName "Notify w current X selection"    $ unsafeWithSelection "notify-send")
   --, ("M-7"                    , addName "TESTING"                         $ runInTerm "-name glances" "glances" )
   --, ("M-u"                    , addName "Copy current browser URL"        $ spawn "with-url copy")
-    , ("M-o"                    , addName "Display (output) launcher"       $ spawn "displayctl menu")
-    , ("M-<XF86Display>"        , addName "Display - force internal"        $ spawn "displayctl internal")
-    , ("S-<XF86Display>"        , addName "Display - force internal"        $ spawn "displayctl internal")
+    , ("M-o"                    , addName "Display (output) launcher"       $ spawn "xm menu")
+    , ("M-<XF86Display>"        , addName "Display - force internal"        $ spawn "xm internal")
+    , ("S-<XF86Display>"        , addName "Display - force internal"        $ spawn "xm internal")
     , ("M-i"                    , addName "Network (Interface) launcher"    $ spawn "networkmanager_dmenu")
     , ("M-/"                    , addName "On-screen keys"                  $ spawn "killall screenkey &>/dev/null || screenkey --no-systray")
     , ("M-S-/"                  , addName "On-screen keys settings"         $ spawn "screenkey --show-settings")
@@ -1039,7 +1042,7 @@ myKeys conf = let
     ++ zipM' "M-"               "Navigate window"                           dirKeys dirs windowGo True
     -- ++ zipM' "M-S-"               "Move window"                               dirKeys dirs windowSwap True
     -- TODO: following may necessitate use of a "passthrough" binding that can send C- values to focused w
-    ++ zipM' "C-"             "Move window"                               dirKeys dirs windowSwap True
+    ++ zipM' "C-"             "Move window"                                  dirKeys dirs windowSwap True
     ++ zipM  "M-C-"             "Merge w/sublayout"                         dirKeys dirs (sendMessage . pullGroup)
     ++ zipM' "M-"               "Navigate screen"                           arrowKeys dirs screenGo True
     -- ++ zipM' "M-S-"             "Move window to screen"                     arrowKeys dirs windowToScreen True
