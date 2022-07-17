@@ -1,0 +1,33 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/speng/.emacs.d/" . "el/")
+ ("/home/speng/" . "Org/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/speng/Org/"
+ "/home/speng/.emacs.d/el/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "todo.org"
+ "ui.el"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/speng/Org/" (25284 20388 390030 616000) "school.org" "notes.org" "links.org" "refile.org" "main.org" "newscience.org" "career.org" "violin.org" "todo.org" "assessments.org" "ltximg/" "archive/" "diary.org" ".goutputstream-LJMWP0" "static/" "images/" ".stfolder.removed-20220303-215613/" ".stfolder (2)/" ".stfolder (1)/" ".stfolder/" "../" "./")
+
+ ("/home/speng/.emacs.d/el/" (25284 49501 500004 461000) "bh.el" "ui.el" "timeshits.el" "sanity.el" "org-clock-save.el" "misc.el" "lang.el" "init-helm.el" "../" "./")
+
+ ("/home/speng/.emacs.d/" (25284 49506 620004 514000) "ido.last" "org-clock-save.el" "auto-save-list/" "backup/" "elpa/" "var/" "places" "init.el" "eln-cache/" "el/" "bookmarks" "README.md" ".org-id-locations" ".gitignore" "../" "./")
+
+ ("/home/speng/" (25284 49460 500004 34000) ".gtkrc-2.0" "Camera Raw/" ".java/" ".vscode-oss/" "docker/" ".pki/" ".pulse-cookie" ".steampid" ".steampath" ".steam/" "pkgs" "emacs-git/" "org-bkp/" "Desktop/" "Downloads/" ".emacs.d/" "Pictures/" ".photoprism/" ".lesshst" "Music/" "Org/" "Camera/" "Documents/" "privatekey" "publickey" ".wget-hsts" "Sync/" ".mozilla/" ".viminfo" ".vim/" ".cache/" "yay-bin/" ".bash_history" ".bashrc" ".gnupg/" "tmp/" "suckless/" "bin/" "README.md" ".xscreensaver" ".xmonad/" ".xinitrc" ".vimrc" ".tmux.conf" ".newsboat/" ".inputrc" ".gitignore" ".env" ".asoundrc" ".Xresources" ".local/" ".config/" ".ssh/" ".bash_profile" ".bash_logout" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

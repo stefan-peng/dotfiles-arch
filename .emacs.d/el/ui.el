@@ -45,11 +45,13 @@
   :config (progn
             (load-theme 'ewal-spacemacs-modern t)
             (enable-theme 'ewal-spacemacs-modern)))
+
 (use-package ewal-evil-cursors
   :ensure t
   :after (ewal-spacemacs-themes)
   :config (ewal-evil-cursors-get-colors
-           :apply t :spaceline t))
+          :apply t :spaceline t))
+
 (use-package spaceline
   :ensure t
   :after (ewal-evil-cursors winum)
