@@ -1,6 +1,7 @@
 acpi
 adobe-source-han-sans-otc-fonts
 adobe-source-han-serif-otc-fonts
+alacritty
 anki-bin
 autoconf
 automake
@@ -31,7 +32,9 @@ intel-ucode
 iw
 kde-applications-meta
 libreoffice-fresh
+lightnovel-cli-git
 linux-lts
+linux-zen
 lsd
 maim
 man-db
@@ -40,6 +43,7 @@ mpc
 mpd
 mtr
 neofetch
+networkmanager-dmenu-git
 newsboat
 otf-cascadia-code
 pamixer
@@ -48,17 +52,19 @@ picom
 plasma-meta
 plasma-wayland-session
 python-i3ipc
+python-pywalfox
 qutebrowser
 ranger
 rawtherapee
 razercfg
-rofi
+redshift
 rsync
 rxvt-unicode
 screenkey
 shellcheck
 sigil
 slock
+spacefm
 steam
 sway
 syncthing
@@ -77,7 +83,6 @@ ttf-arphic-ukai
 ttf-arphic-uming
 ttf-joypixels
 vim
-wget
 wireguard-tools
 wofi
 wpgtk
@@ -88,6 +93,7 @@ xmonad-contrib
 xmonad-utils
 xorg-xbacklight
 xorg-xinit
+xscreensaver
 xss-lock
 yadm
 yay-bin
