@@ -3,7 +3,7 @@
 #stdlayout=us  # standard layout takes "default" color
 #stdname=en-us # arbitrary, descriptive only
 
-english="xkb:us:altgr-intl:eng"
+english="xkb:us::eng"
 chinese=libpinyin
 french="xkb:fr::fra"
 spanish="xkb:es::spa"

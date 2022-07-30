@@ -20,7 +20,7 @@ set $term kitty
 # set $browser brave --use-gl=desktop --enable-features=VaapiVideoDecoder
 set $browser MOZ_ENABLE_WAYLAND=1 firefox
 # set $browser google-chrome-stable --use-gl=desktop --enable-features=VaapiVideoDecoder
-set $randomizetheme wal -i ~/Documents/Wallpapers/
+set $randomizetheme "wal -i ~/Documents/Wallpapers/; ~/bin/razerwal.py"
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -258,5 +258,6 @@ bar {
 }
 
 exec ~/bin/sway-autoname-workspaces -d &
-# exec $randomizetheme &
+exec $randomizetheme &
+exec ~/bin/razerwal.py &
 include /etc/sway/config.d/*

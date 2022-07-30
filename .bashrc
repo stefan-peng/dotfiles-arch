@@ -9,8 +9,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# [ -r ~/.cache/wal/sequences ] && (/usr/bin/cat ~/.cache/wal/sequences &)
-# [ -r ~/.cache/wal/colors-tty.sh ] && source ~/.cache/wal/colors-tty.sh
+[ -r ~/.cache/wal/sequences ] && (/usr/bin/cat ~/.cache/wal/sequences &)
+[ -r ~/.cache/wal/colors-tty.sh ] && source ~/.cache/wal/colors-tty.sh
 
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
