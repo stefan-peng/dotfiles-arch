@@ -219,7 +219,7 @@ projects =
 
 -- | Uses supplied function to decide which action to run depending on current workspace name.
 
-myTerminal          = "alacritty"
+myTerminal          = "urxvt"
 myAltTerminal       = "st -e"
 myBrowser           = "firefox"
 myFileManager       = "spacefm"

@@ -166,7 +166,6 @@ URxvt*termName: xterm-256color
 !! cf https://github.com/muennich/urxvt-perls
 
 !XFT
-Xft.dpi       : 96
 Xft.lcdfilter : lcddefault
 Xft.hintstyle : hintslight
 Xft.hinting   : true
