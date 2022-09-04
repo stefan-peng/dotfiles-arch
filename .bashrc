@@ -5,12 +5,32 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export PATH=~/bin:~/.local/bin:$PATH:/usr/local/go/bin
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-[ -r ~/.cache/wal/sequences ] && (/usr/bin/cat ~/.cache/wal/sequences &)
-[ -r ~/.cache/wal/colors-tty.sh ] && source ~/.cache/wal/colors-tty.sh
+# [ -r ~/.cache/wal/sequences ] && (/usr/bin/cat ~/.cache/wal/sequences &)
+# [ -r ~/.cache/wal/colors-tty.sh ] && source ~/.cache/wal/colors-tty.sh
+
+if command -v theme.sh > /dev/null; then
+	[ -e ~/.theme_history ] && theme.sh "$(theme.sh -l|tail -n1)"
+
+	# Optional
+
+	#Binds C-o to the previously active theme.
+	bind -x '"\C-o":"theme.sh $(theme.sh -l|tail -n2|head -n1)"'
+
+	alias th='theme.sh -i'
+
+	# Interactively load a light theme
+	alias thl='theme.sh --light -i'
+
+	# Interactively load a dark theme
+	alias thd='theme.sh --dark -i'
+fi
+
 
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
@@ -21,15 +41,14 @@ fi
 
 PS1='$(prompt) \$ '
 
-export PATH=~/bin:~/.local/bin:$PATH:/usr/local/go/bin
 export EDITOR=vim
 export LANG=en_US.UTF-8
 #export GDK_BACKEND=wayland
-export MOZ_ENABLE_WAYLAND=1
+#export MOZ_ENABLE_WAYLAND=1
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-export QT_QPA_PLATFORM=wayland
+#export QT_QPA_PLATFORM=wayland
 
 set -b
 

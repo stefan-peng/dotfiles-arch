@@ -13,8 +13,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'w0rp/ale'
 Plug 'altercation/vim-colors-solarized'
 Plug 'jeffkreeftmeijer/vim-dim'
-Plug 'dylanaraps/wal.vim'
-Plug 'arcticicestudio/nord-vim'
+"Plug 'dylanaraps/wal.vim'
+"Plug 'arcticicestudio/nord-vim'
 Plug 'lervag/vimtex'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -41,6 +41,8 @@ endif
 syntax enable
 set background=dark
 let g:solarized_termtrans=1
+"set notermguicolors
+"highlight Search ctermfg=0
 colorscheme solarized
 
 "Text

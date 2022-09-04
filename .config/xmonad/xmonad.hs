@@ -156,9 +156,10 @@ wsVIX   = "VIX"
 wsWRK   = "WRK"
 wsMUS   = "MUS"
 wsFLOAT = "FLT"
+wsVID   = "VID"
 
 -- myWorkspaces = map show [1..9]
-myWorkspaces = [wsGEN, wsWEB, wsVIX, wsDMO, wsMON, wsMUS]
+myWorkspaces = [wsGEN, wsWEB, wsVIX, wsDMO, wsMON, wsMUS, wsVID]
 
 projects :: [Project]
 projects =
@@ -210,6 +211,11 @@ projects =
     , Project   { projectName       = wsMUS
                 , projectDirectory  = "~/"
                 , projectStartHook  = Just $ do spawn myMusic
+                }
+
+    , Project   { projectName       = wsVID
+                , projectDirectory  = "~/"
+                , projectStartHook  = Just $ do runInTerm "-name vid" "y"
                 }
     ]
 
