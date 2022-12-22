@@ -41,6 +41,7 @@
             "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
             "interval": 10,
             "max-length": 30,
+            "on-click": "mpc toggle",
             "consume-icons": {
                 "on": " " // Icon shows only when "consume" is on
             },

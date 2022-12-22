@@ -20,7 +20,7 @@ set $term kitty
 # set $browser brave --use-gl=desktop --enable-features=VaapiVideoDecoder
 set $browser MOZ_ENABLE_WAYLAND=1 firefox
 # set $browser google-chrome-stable --use-gl=desktop --enable-features=VaapiVideoDecoder
-set $randomizetheme "wal -i ~/Documents/Wallpapers/; ~/bin/razerwal.py"
+set $randomizetheme wal -i ~/Documents/Wallpapers/
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -74,6 +74,7 @@ input "type:pointer" {
 
 input "type:keyboard" {
     xkb_layout us
+    xkb_variant altgr-weur
     xkb_options ctrl:nocaps
     xkb_numlock enable
 }
@@ -93,15 +94,18 @@ input "type:keyboard" {
     bindsym $mod+d exec $menu
 
     # Custom
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioRaiseVolume exec pamixer -i 5
+    bindsym XF86AudioLowerVolume exec pamixer -d 5
     bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
     bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
     bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym XF86MonBrightnessUp exec brightnessctl set +5%
     bindsym XF86AudioPlay exec mpc toggle
+    bindsym $mod+Ctrl+Mod1+Space exec mpc toggle
     bindsym XF86AudioNext exec mpc next
+    bindsym $mod+Ctrl+Mod1+n exec mpc next
     bindsym XF86AudioPrev exec mpc prev
+    bindsym $mod+Ctrl+Mod1+p exec mpc prev
     bindsym $mod+x exec ~/.config/swaylock/lock.sh
     bindsym $mod+shift+x exec systemctl suspend
     bindsym $mod+BackSlash exec $browser 
@@ -259,5 +263,7 @@ bar {
 
 exec ~/bin/sway-autoname-workspaces -d &
 exec $randomizetheme &
-exec ~/bin/razerwal.py &
+exec gammastep &
+#exec ~/bin/razerwal.py &
+exec dbus -irxR &
 include /etc/sway/config.d/*
