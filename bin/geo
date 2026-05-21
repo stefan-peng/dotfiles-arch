@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exiftool -geotag="$1" -overwrite_original "$2"

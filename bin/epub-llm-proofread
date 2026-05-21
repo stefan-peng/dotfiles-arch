@@ -1,0 +1,324 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#   "ebooklib",
+#   "beautifulsoup4",
+#   "lxml",
+#   "requests",
+#   "tqdm",
+# ]
+# ///
+"""
+Proofread an EPUB using a local LLM served by LM Studio (OpenAI-compatible API).
+
+- Reads .epub
+ XHTML/HTML content docs
+- Sends body text chunks to LM Studio /v1/chat/completions
+- Replaces only text nodes (preserves tags/structure)
+- Writes a new .epub
+
+LM Studio defaults:
+  Base URL: http://localhost:1234/v1
+  Endpoint: POST /chat/completions
+"""
+
+import argparse
+import hashlib
+import json
+import re
+import sys
+import time
+from dataclasses import dataclass
+from typing import Dict, Iterable, List, Optional, Tuple
+
+import requests
+from bs4 import BeautifulSoup, NavigableString, Tag
+from ebooklib import epub
+from tqdm import tqdm
+
+
+# -----------------------------
+# Local LLM client (LM Studio)
+# -----------------------------
+
+@dataclass
+class LLMConfig:
+    base_url: str = "http://localhost:1234/api/v1"
+    model: str = "liquid/lfm2.5-1.2b"          # set to the model name LM Studio exposes, or leave and pass via CLI
+    temperature: float = 0.2
+    max_tokens: int = 800               # per chunk output cap
+    max_retries: int = 4
+    timeout_s: int = 180
+    api_key: Optional[str] = None       # LM Studio often doesn't require one; if it does, pass via CLI
+
+
+SYSTEM_PROMPT = (
+    "You are a careful copy editor.\n"
+    "Task: Fix spelling, grammar, punctuation, and obvious typos.\n"
+    "Constraints:\n"
+    "- Preserve meaning, voice, and tense.\n"
+    "- Do NOT paraphrase or rewrite for style beyond necessary corrections.\n"
+    "- Keep proper nouns and technical terms unchanged.\n"
+    "- Preserve quotes, em-dashes, ellipses, and spacing conventions as much as possible.\n"
+    "- Return ONLY the corrected text, no explanations."
+)
+
+def lmstudio_chat_completion(cfg: LLMConfig, text: str) -> str:
+    """
+    Calls LM Studio OpenAI-compatible chat completions endpoint.
+    """
+    url = cfg.base_url.rstrip("/") + "/chat/completions"
+    headers = {"Content-Type": "application/json"}
+    if cfg.api_key:
+        headers["Authorization"] = f"Bearer {cfg.api_key}"
+
+    payload = {
+        "model": cfg.model,
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": text},
+        ],
+        "temperature": cfg.temperature,
+        "max_tokens": cfg.max_tokens,
+        "stream": False,
+    }
+
+    last_err = None
+    for attempt in range(1, cfg.max_retries + 1):
+        try:
+            r = requests.post(url, headers=headers, json=payload, timeout=cfg.timeout_s)
+            r.raise_for_status()
+            data = r.json()
+            # OpenAI-style response: choices[0].message.content
+            out = data["choices"][0]["message"]["content"]
+            return out.strip()
+        except Exception as e:
+            last_err = e
+            time.sleep(0.8 * (2 ** (attempt - 1)))
+
+    raise RuntimeError(f"LM Studio request failed after {cfg.max_retries} attempts: {last_err}")
+
+
+# -----------------------------
+# EPUB text extraction/editing
+# -----------------------------
+
+SKIP_TAGS = {"script", "style", "code", "pre", "kbd", "samp"}
+
+def is_probably_sentence_text(s: str) -> bool:
+    s2 = s.strip()
+    if len(s2) < 25:
+        return False
+    if not re.search(r"[A-Za-z]", s2):
+        return False
+    letters = len(re.findall(r"[A-Za-z]", s2))
+    if letters / max(1, len(s2)) < 0.2:
+        return False
+    return True
+
+def iter_text_nodes(soup: BeautifulSoup) -> Iterable[NavigableString]:
+    for node in soup.descendants:
+        if isinstance(node, NavigableString):
+            parent = node.parent
+            if not isinstance(parent, Tag):
+                continue
+            if parent.name and parent.name.lower() in SKIP_TAGS:
+                continue
+            if node.string is None:
+                continue
+            yield node
+
+def normalize_ws_for_prompt(s: str) -> str:
+    s = s.replace("\u00A0", " ")
+    s = re.sub(r"[ \t]{3,}", "  ", s)
+    return s
+
+def restore_nbsp(original: str, edited: str) -> str:
+    if "\u00A0" not in original:
+        return edited
+    if abs(len(original) - len(edited)) > max(25, int(0.25 * len(original))):
+        return edited
+    edited_chars = list(edited)
+    for i in range(min(len(original), len(edited_chars))):
+        if original[i] == "\u00A0" and edited_chars[i] == " ":
+            edited_chars[i] = "\u00A0"
+    return "".join(edited_chars)
+
+def stable_key(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+def chunk_text(text: str, max_chars: int) -> List[str]:
+    text = text.strip()
+    if len(text) <= max_chars:
+        return [text]
+
+    paras = re.split(r"\n{2,}", text)
+    chunks: List[str] = []
+    cur = ""
+
+    for p in paras:
+        p = p.strip()
+        if not p:
+            continue
+        candidate = (cur + "\n\n" + p).strip() if cur else p
+        if len(candidate) <= max_chars:
+            cur = candidate
+        else:
+            if cur:
+                chunks.append(cur)
+                cur = ""
+            if len(p) <= max_chars:
+                cur = p
+            else:
+                parts = re.split(r"(?<=[.!?])\s+", p)
+                buf = ""
+                for part in parts:
+                    cand2 = (buf + " " + part).strip() if buf else part
+                    if len(cand2) <= max_chars:
+                        buf = cand2
+                    else:
+                        if buf:
+                            chunks.append(buf)
+                        buf = part
+                if buf:
+                    cur = buf
+
+    if cur:
+        chunks.append(cur)
+    return chunks
+
+def proofread_text(cfg: LLMConfig, text: str, max_chars: int, cache: Dict[str, str]) -> str:
+    key = stable_key(text)
+    if key in cache:
+        return cache[key]
+
+    chunks = chunk_text(text, max_chars=max_chars)
+    edited_chunks: List[str] = []
+
+    for ch in chunks:
+        prompt = normalize_ws_for_prompt(ch)
+        out = lmstudio_chat_completion(cfg, prompt)
+        edited_chunks.append(out)
+
+    edited = "\n\n".join(edited_chunks).strip()
+    cache[key] = edited
+    return edited
+
+
+# -----------------------------
+# Main processing
+# -----------------------------
+
+def process_xhtml_item(
+    cfg: LLMConfig,
+    item: epub.EpubHtml,
+    max_chars: int,
+    cache: Dict[str, str],
+    dry_run: bool,
+) -> Tuple[bool, int]:
+    content = item.get_content().decode("utf-8", errors="replace")
+    soup = BeautifulSoup(content, "lxml")
+
+    body = soup.body
+    if body is None:
+        return (False, 0)
+
+    changed = False
+    changed_nodes = 0
+
+    for node in iter_text_nodes(body):
+        original = str(node)
+        if not is_probably_sentence_text(original):
+            continue
+        if not original.strip():
+            continue
+
+        try:
+            edited = proofread_text(cfg, original, max_chars=max_chars, cache=cache)
+        except Exception as e:
+            print(f"[WARN] LLM failed for a text node in {item.file_name}: {e}", file=sys.stderr)
+            continue
+
+        edited = restore_nbsp(original, edited)
+
+        if edited and edited != original:
+            if not dry_run:
+                node.replace_with(edited)
+            changed = True
+            changed_nodes += 1
+
+    if changed and not dry_run:
+        item.set_content(str(soup).encode("utf-8"))
+
+    return (changed, changed_nodes)
+
+def load_cache(path: Optional[str]) -> Dict[str, str]:
+    if not path:
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+    except Exception:
+        return {}
+
+def save_cache(path: Optional[str], cache: Dict[str, str]) -> None:
+    if not path:
+        return
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False, indent=2)
+
+def main():
+    ap = argparse.ArgumentParser(description="Proofread EPUB using LM Studio (OpenAI-compatible local API).")
+    ap.add_argument("input_epub", help="Input .epub path")
+    ap.add_argument("output_epub", help="Output .epub path")
+
+    ap.add_argument("--base-url", default="http://localhost:1234/v1", help="LM Studio base URL, e.g. http://localhost:1234/v1")
+    ap.add_argument("--model", default="local-model", help="Model identifier LM Studio exposes (see LM Studio Server tab)")
+    ap.add_argument("--api-key", default="", help="Optional API key if your server requires it")
+    ap.add_argument("--temperature", type=float, default=0.2, help="Sampling temperature")
+    ap.add_argument("--max-tokens", type=int, default=800, help="Max tokens per chunk output")
+    ap.add_argument("--max-chars", type=int, default=1200, help="Max chars per LLM call (chunk size)")
+    ap.add_argument("--cache", default="epub_llm_cache.json", help="Cache JSON path (hash->edited). Use '' to disable.")
+    ap.add_argument("--dry-run", action="store_true", help="Do not write changes; just report.")
+
+    args = ap.parse_args()
+
+    cache_path = args.cache.strip() or None
+    cache = load_cache(cache_path)
+
+    cfg = LLMConfig(
+        base_url=args.base_url,
+        model=args.model,
+        temperature=args.temperature,
+        max_tokens=args.max_tokens,
+        api_key=(args.api_key.strip() or None),
+    )
+
+    book = epub.read_epub(args.input_epub)
+    html_items = [it for it in book.get_items() if isinstance(it, epub.EpubHtml)]
+
+    total_changed_items = 0
+    total_changed_nodes = 0
+
+    for it in tqdm(html_items, desc="Proofreading XHTML"):
+        changed, changed_nodes = process_xhtml_item(cfg, it, args.max_chars, cache, args.dry_run)
+        if changed:
+            total_changed_items += 1
+            total_changed_nodes += changed_nodes
+
+    save_cache(cache_path, cache)
+
+    if args.dry_run:
+        print(f"Dry run complete. Items that would change: {total_changed_items}/{len(html_items)}")
+        print(f"Text nodes that would change: {total_changed_nodes}")
+        return
+
+    epub.write_epub(args.output_epub, book)
+    print(f"Wrote corrected EPUB: {args.output_epub}")
+    print(f"Changed items: {total_changed_items}/{len(html_items)}; changed text nodes: {total_changed_nodes}")
+
+if __name__ == "__main__":
+    main()

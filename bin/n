@@ -1,0 +1,3 @@
+#!/bin/bash
+
+newsboat -u $HOME/.newsboat/urls -c $HOME/.newsboat/cache.db

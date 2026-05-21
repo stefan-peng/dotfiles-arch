@@ -4,6 +4,9 @@
 *.o
 .DS_Store
 
+# Local clone of the upstream Kitty theme catalog; commit selected themes directly.
+.config/kitty/kitty-themes/
+
 # MPV runtime state
 .config/mpv/watch_later/
 
