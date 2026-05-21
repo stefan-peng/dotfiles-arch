@@ -1,8 +1,11 @@
+//go:build linux
+
 package main
 
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 	"syscall"
 	"time"
@@ -13,14 +16,14 @@ func main() {
 	host, _ := os.Hostname()
 	home := os.Getenv("HOME")
 	var parts []string
-	if strings.HasPrefix(cwd, home) {
+	if home != "" && (cwd == home || strings.HasPrefix(cwd, home+string(filepath.Separator))) {
 		cwd = "~" + cwd[len(home):]
 	}
 	var sysinfo syscall.Sysinfo_t
 	syscall.Sysinfo(&sysinfo)
 	uptime := time.Duration(sysinfo.Uptime) * time.Second
 	fmt.Printf("[%d:%02d:%02d] %s ", int64(uptime.Hours()),
-		int64(uptime.Minutes()) % 60, int64(uptime.Seconds()) % 60,
+		int64(uptime.Minutes())%60, int64(uptime.Seconds())%60,
 		host)
 
 	parts = strings.Split(cwd, "/")

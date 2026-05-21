@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -14,7 +15,7 @@ func main() {
 	host, _ := os.Hostname()
 	home := os.Getenv("HOME")
 	var parts []string
-	if strings.HasPrefix(cwd, home) {
+	if home != "" && (cwd == home || strings.HasPrefix(cwd, home+string(filepath.Separator))) {
 		cwd = "~" + cwd[len(home):]
 	}
 

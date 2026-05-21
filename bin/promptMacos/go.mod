@@ -1,6 +1,6 @@
 module github.com/stefan-peng/prompt-macos
 
-go 1.21.6
+go 1.21
 
 require github.com/elastic/go-sysinfo v1.11.2
 
